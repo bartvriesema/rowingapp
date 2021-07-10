@@ -5,13 +5,11 @@ package org.vriesema.novi.rowingapp.model;
  * @author:   bartvriesema
  */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@IdClass(org.vriesema.novi.rowingapp.model.AuthorityKey.class)
 @Table(name = "authorities")
 public class Authority implements Serializable {
     @Id
@@ -22,7 +20,14 @@ public class Authority implements Serializable {
     @Column(nullable = false)
     private String authority;
 
-    //Getters and setters
+    public Authority() {
+    }
+
+    public Authority(String username, String authority) {
+        this.username = username;
+        this.authority = authority;
+    }
+
 
     public String getUsername() {
         return username;
