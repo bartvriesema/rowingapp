@@ -1,4 +1,4 @@
-package org.vriesema.novi.rowingapp.model;
+package org.vriesema.novi.rowingapp.model.authentication;
 /*
  * @created:  2021-07-03
  * @project:  rowingapp
@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@IdClass(org.vriesema.novi.rowingapp.model.AuthorityKey.class)
+@IdClass(AuthorityKey.class)
 @Table(name = "authorities")
 public class Authority implements Serializable {
     @Id

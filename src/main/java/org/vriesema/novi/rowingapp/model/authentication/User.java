@@ -1,9 +1,11 @@
-package org.vriesema.novi.rowingapp.model;
+package org.vriesema.novi.rowingapp.model.authentication;
 /*
  * @created:  2021-07-03
  * @project:  rowingapp
  * @author:   bartvriesema
  */
+
+import org.vriesema.novi.rowingapp.model.rowingclub.Person;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,6 +14,10 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+    /*
+    Users en persons kunnen onafhankelijk van elkaar bestaan. Er kan een relatie gelegd worden
+    tussen een user en een person.
+     */
 
     @Id
     @Column(nullable = false, unique = true)
@@ -24,18 +30,18 @@ public class User {
     private boolean enabled = true;
 
     @Column
-    private String apikey;
-
-    @Column
     private String email;
 
     @OneToMany(
-            targetEntity = org.vriesema.novi.rowingapp.model.Authority.class,
+            targetEntity = Authority.class,
             mappedBy = "username",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER)
-    private Set<org.vriesema.novi.rowingapp.model.Authority> authorities = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
+
+    @OneToOne
+    Person person;
 
     public String getUsername() { return username; }
     public void setUsername(String username) {
@@ -49,8 +55,6 @@ public class User {
     }
     public boolean isEnabled() { return enabled;}
     public void setEnabled(boolean enabled) { this.enabled = enabled; }
-    public String getApikey() { return apikey; }
-    public void setApikey(String apikey) { this.apikey = apikey; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email;}
 

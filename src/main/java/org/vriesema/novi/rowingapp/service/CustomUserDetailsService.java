@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.vriesema.novi.rowingapp.model.Authority;
-import org.vriesema.novi.rowingapp.model.User;
+import org.vriesema.novi.rowingapp.model.authentication.Authority;
+import org.vriesema.novi.rowingapp.model.authentication.User;
 
 import java.util.ArrayList;
 import java.util.List;

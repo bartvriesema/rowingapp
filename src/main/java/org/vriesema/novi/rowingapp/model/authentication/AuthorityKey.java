@@ -1,4 +1,4 @@
-package org.vriesema.novi.rowingapp.model;
+package org.vriesema.novi.rowingapp.model.authentication;
 /*
  * @created:  2021-07-10
  * @project:  rowingapp
