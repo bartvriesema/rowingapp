@@ -23,4 +23,5 @@ public interface UserService {
     public abstract Set<Authority> getAuthorities(String username);
     public abstract void addAuthority(String username, String authority);
     public abstract void removeAuthority(String username, String authority);
+
 }

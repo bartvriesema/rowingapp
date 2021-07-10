@@ -5,5 +5,6 @@ package org.vriesema.novi.rowingapp.exceptions;
  * @author:   bartvriesema
  */
 
-public class BadRequestException extends Throwable {
+public class BadRequestException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
 }

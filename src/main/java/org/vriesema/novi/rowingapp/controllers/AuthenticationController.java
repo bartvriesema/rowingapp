@@ -12,11 +12,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.vriesema.novi.rowingapp.payload.AuthenticationRequest;
 import org.vriesema.novi.rowingapp.payload.AuthenticationResponse;
 import org.vriesema.novi.rowingapp.service.CustomUserDetailsService;
@@ -25,6 +21,7 @@ import org.vriesema.novi.rowingapp.utils.JwtUtil;
 import java.security.Principal;
 
 @RestController
+@RequestMapping("/")
 public class AuthenticationController {
 
     @Autowired
@@ -51,8 +48,7 @@ public class AuthenticationController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password)
             );
-        }
-        catch (BadCredentialsException ex) {
+        } catch (BadCredentialsException ex) {
             throw new Exception("Incorrect username or password", ex);
         }
 
@@ -62,6 +58,7 @@ public class AuthenticationController {
         final String jwt = jwtUtl.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
+
     }
 
 }

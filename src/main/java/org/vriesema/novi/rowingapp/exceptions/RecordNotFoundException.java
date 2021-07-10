@@ -5,5 +5,6 @@ package org.vriesema.novi.rowingapp.exceptions;
  * @author:   bartvriesema
  */
 
-public class RecordNotFoundException extends Throwable {
+public class RecordNotFoundException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
 }

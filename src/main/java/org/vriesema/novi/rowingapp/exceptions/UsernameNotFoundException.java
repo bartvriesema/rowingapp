@@ -5,7 +5,11 @@ package org.vriesema.novi.rowingapp.exceptions;
  * @author:   bartvriesema
  */
 
-public class UsernameNotFoundException extends Throwable {
+public class UsernameNotFoundException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
 
+    public UsernameNotFoundException(String username) {
+        super("Cannot find user " + username);
+    }
 
 }

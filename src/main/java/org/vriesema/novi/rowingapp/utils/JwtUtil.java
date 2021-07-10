@@ -23,7 +23,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private final static String SECRET_KEY = "LetTheBoatWorkAndNotMe";
+    private final static String SECRET_KEY = "secret"; //TODO change passphrase
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
