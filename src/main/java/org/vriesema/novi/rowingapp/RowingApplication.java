@@ -8,6 +8,7 @@ package org.vriesema.novi.rowingapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class RowingApplication {
 

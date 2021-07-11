@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class BaseController {
 
     @GetMapping(value = "/")
@@ -18,7 +18,7 @@ public class BaseController {
         return "Welcome to the rowing application";
     }
 
-    @GetMapping(value = "/api/users/")
+    @GetMapping(value = "/users/")
     public String greetingAuthenticated() {
         return "User is authenticated";
     }

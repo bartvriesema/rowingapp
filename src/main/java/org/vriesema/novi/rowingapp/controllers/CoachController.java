@@ -5,5 +5,10 @@ package org.vriesema.novi.rowingapp.controllers;
  * @author:   bartvriesema
  */
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/users/coaches")
 public class CoachController {
 }

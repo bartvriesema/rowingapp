@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import org.vriesema.novi.rowingapp.service.CustomUserDetailsService;
 import org.vriesema.novi.rowingapp.utils.JwtUtil;
 

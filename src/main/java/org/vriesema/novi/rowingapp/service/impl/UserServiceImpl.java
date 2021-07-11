@@ -7,6 +7,7 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
 import org.vriesema.novi.rowingapp.exceptions.UsernameNotFoundException;
 import org.vriesema.novi.rowingapp.model.authentication.Authority;
@@ -21,11 +22,12 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements org.vriesema.novi.rowingapp.service.UserService {
 
-    @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private AuthorityRepository authorityRepository;
+    @Autowired
+    public UserServiceImpl (UserRepository repository) {
+        this.userRepository = repository;
+    }
 
     @Override
     public Collection<User> getUsers() {
@@ -44,7 +46,7 @@ public class UserServiceImpl implements org.vriesema.novi.rowingapp.service.User
 
     @Override
     public String createUser(User user) {
-//        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
+//        String randomString = RandomStringGenerator.generateAlphaNumeric(20); // TODO Check if this is still needed
 //        user.setApikey(randomString);
         User newUser = userRepository.save(user);
         return newUser.getUsername();

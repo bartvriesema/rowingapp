@@ -8,7 +8,7 @@ package org.vriesema.novi.rowingapp.utils;
 import java.util.Random;
 
 public class RandomStringGenerator {
-
+// TODO Is this class still needed?
     public static String generateAlphaNumeric(int length) {
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'
