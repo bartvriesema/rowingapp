@@ -1,4 +1,4 @@
-package org.vriesema.novi.rowingapp.service;
+package org.vriesema.novi.rowingapp.service.impl;
 /*
  * @created:  2021-07-03
  * @project:  rowingapp
