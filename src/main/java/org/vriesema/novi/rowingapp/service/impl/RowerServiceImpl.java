@@ -25,6 +25,6 @@ public class RowerServiceImpl implements RowerService {
 
     @Override
     public List<Rower> getRowers() {
-        return null;
+        return rowerRepository.findAll();
     }
 }

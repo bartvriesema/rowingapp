@@ -12,17 +12,17 @@ import java.time.LocalDate;
 public class Heartrate {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long heartRateId;
 
     @Column
-    private LocalDate heartRateDate;
+    LocalDate heartRateDate;
 
     @Column
-    private int heartRate;
+    int heartRate;
 
     @ManyToOne
-    private Rower rower;
+    Rower rower;
 
     public LocalDate getHeartRateDate() {
         return heartRateDate;

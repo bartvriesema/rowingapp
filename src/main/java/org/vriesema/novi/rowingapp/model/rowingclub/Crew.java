@@ -12,7 +12,7 @@ import java.util.List;
 public class Crew {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @Column

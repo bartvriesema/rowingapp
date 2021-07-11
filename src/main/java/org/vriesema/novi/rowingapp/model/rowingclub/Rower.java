@@ -12,17 +12,17 @@ import java.util.List;
 public class Rower extends Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
 
     @Column
-    private int numberOfVictoryPoints;
+    int numberOfVictoryPoints;
 
     @OneToMany(mappedBy = "rower")
-    private List<Heartrate> heartrateList;
+    List<Heartrate> heartrateList;
 
     @Column
-    private boolean isRower;
+    boolean isRower;
 
     public int getNumberOfVictoryPoints() {
         return numberOfVictoryPoints;
