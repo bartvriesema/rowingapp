@@ -5,7 +5,8 @@ package org.vriesema.novi.rowingapp.model.rowingclub;
  * @author:   bartvriesema
  */
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 @Entity
 public class Coach extends Person {

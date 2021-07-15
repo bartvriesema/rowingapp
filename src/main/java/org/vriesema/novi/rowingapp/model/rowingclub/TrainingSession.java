@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class TrainingSession {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
 
     @Column

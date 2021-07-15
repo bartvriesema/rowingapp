@@ -6,6 +6,7 @@ package org.vriesema.novi.rowingapp.service;
  */
 
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
+
 import java.util.List;
 
 public interface RowerService {

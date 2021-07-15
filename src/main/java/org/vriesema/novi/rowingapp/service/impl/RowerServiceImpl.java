@@ -7,7 +7,6 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import org.vriesema.novi.rowingapp.repository.RowerRepository;
 import org.vriesema.novi.rowingapp.service.RowerService;

@@ -23,8 +23,15 @@ import java.util.Set;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
+//    @Autowired
+//    private UserService userService;
+
     private UserService userService;
+
+    @Autowired
+    public CustomUserDetailsService(UserService userService) {
+        this.userService = userService;
+    }
 
     //TODO Fix code below for own implementation
     @Override
@@ -38,7 +45,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         Set<Authority> authorities = user.get().getAuthorities();
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for (Authority authority: authorities) {
+        for (Authority authority : authorities) {
             grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
         }
 

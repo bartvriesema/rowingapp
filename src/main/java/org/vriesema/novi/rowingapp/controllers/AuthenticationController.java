@@ -13,7 +13,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
 import org.vriesema.novi.rowingapp.payload.AuthenticationRequest;
 import org.vriesema.novi.rowingapp.payload.AuthenticationResponse;
 import org.vriesema.novi.rowingapp.service.CustomUserDetailsService;
@@ -22,17 +21,19 @@ import org.vriesema.novi.rowingapp.utils.JwtUtil;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+    private final CustomUserDetailsService userDetailsService;
+    private final JwtUtil jwtUtl;
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
-
-    @Autowired
-    JwtUtil jwtUtl;
+    public AuthenticationController(AuthenticationManager authenticationManager, CustomUserDetailsService userDetailsService, JwtUtil jwtUtl) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.jwtUtl = jwtUtl;
+    }
 
     @GetMapping(value = "/authenticated")
     public ResponseEntity<Object> authenticated(Authentication authentication, Principal principal) {

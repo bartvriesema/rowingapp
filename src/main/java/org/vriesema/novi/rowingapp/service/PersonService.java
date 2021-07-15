@@ -9,6 +9,6 @@ import org.vriesema.novi.rowingapp.model.rowingclub.Person;
 
 import java.util.List;
 
-public interface PersonService{
+public interface PersonService {
     List<Person> getPersons();
 }

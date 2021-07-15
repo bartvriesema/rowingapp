@@ -19,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
     private PersonRepository personRepository;
 
     @Autowired
-    public PersonServiceImpl (PersonRepository repository) {
+    public PersonServiceImpl(PersonRepository repository) {
         this.personRepository = repository;
     }
 

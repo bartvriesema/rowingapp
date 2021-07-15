@@ -18,10 +18,10 @@ public class Crew {
     @Column
     String crewName;
 
-    @OneToMany (mappedBy = "crew")
+    @OneToMany(mappedBy = "crew")
     List<Person> crewMembers;
 
-    @OneToMany (mappedBy = "crew")
+    @OneToMany(mappedBy = "crew")
     List<Results> results;
 
 }

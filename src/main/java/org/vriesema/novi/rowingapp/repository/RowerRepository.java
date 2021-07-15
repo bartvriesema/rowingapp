@@ -12,7 +12,7 @@ import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import java.util.List;
 
 public interface RowerRepository extends JpaRepository<Rower, Long> {
-// TODO fix the findByCrew method
+    // TODO fix the findByCrew method
     List<Rower> findByCrew(Crew crew);
 
 }

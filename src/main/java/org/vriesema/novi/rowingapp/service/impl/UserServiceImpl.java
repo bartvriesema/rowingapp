@@ -7,13 +7,11 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
 import org.vriesema.novi.rowingapp.exceptions.UsernameNotFoundException;
 import org.vriesema.novi.rowingapp.model.authentication.Authority;
 import org.vriesema.novi.rowingapp.model.authentication.User;
 import org.vriesema.novi.rowingapp.repository.UserRepository;
-import org.vriesema.novi.rowingapp.utils.RandomStringGenerator;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -25,7 +23,7 @@ public class UserServiceImpl implements org.vriesema.novi.rowingapp.service.User
     private UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl (UserRepository repository) {
+    public UserServiceImpl(UserRepository repository) {
         this.userRepository = repository;
     }
 

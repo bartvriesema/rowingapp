@@ -12,7 +12,7 @@ import java.util.List;
 public class TrainingSchedule {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
 
     @OneToOne

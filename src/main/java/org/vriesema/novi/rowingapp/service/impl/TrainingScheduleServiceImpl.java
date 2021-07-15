@@ -7,7 +7,6 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.vriesema.novi.rowingapp.repository.TrainingScheduleRepository;
 import org.vriesema.novi.rowingapp.service.TrainingScheduleService;
 
@@ -18,7 +17,7 @@ public class TrainingScheduleServiceImpl implements TrainingScheduleService {
     private TrainingScheduleRepository trainingScheduleRepository;
 
     @Autowired
-    public TrainingScheduleServiceImpl (TrainingScheduleRepository repository) {
+    public TrainingScheduleServiceImpl(TrainingScheduleRepository repository) {
         this.trainingScheduleRepository = repository;
     }
 
