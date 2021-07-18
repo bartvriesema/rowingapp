@@ -33,6 +33,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
     }
 
+    //TODO Fix response when authentication fails. Error 500 is now returned in stead of 401.
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = httpServletRequest.getHeader("Authorization");

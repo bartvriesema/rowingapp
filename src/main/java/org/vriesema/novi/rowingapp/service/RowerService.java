@@ -12,4 +12,10 @@ import java.util.List;
 public interface RowerService {
 
     List<Rower> getRowers();
+
+    void addRower(Rower rower);
+
+    // Object findRowerByCrewId(int crewId);
+
+    Object findRowerByCrewId(long crewId);
 }

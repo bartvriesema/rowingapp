@@ -6,20 +6,15 @@ package org.vriesema.novi.rowingapp.controllers;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import org.vriesema.novi.rowingapp.service.RowerService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users/rowers")
 public class RowerController {
     private final RowerService rowerService;
-    //private final PersonService personService;
 
     @Autowired
     public RowerController(RowerService rowerService) {
@@ -27,13 +22,22 @@ public class RowerController {
     }
 
     @GetMapping
-    public List<Rower> getRowers() {
-        return rowerService.getRowers();
+    public ResponseEntity<Object> getRowers() {
+        return ResponseEntity.ok().body(rowerService.getRowers());
+    }
+
+    @GetMapping(value = "/{crew}")
+    public ResponseEntity<Object> getRowerByCrew(@PathVariable("crew") long crewId) {
+
+        return ResponseEntity.ok().body(rowerService.findRowerByCrewId(crewId));
+
     }
 
     @PostMapping
-    public void addRower() {
-
+    public ResponseEntity<Object> addRower(@RequestBody Rower rower) {
+        rowerService.addRower(rower);
+        return ResponseEntity.noContent().build();
     }
-
 }
+
+

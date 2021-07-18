@@ -30,6 +30,6 @@ public class ExceptionController {
 
     @ExceptionHandler(value = UsernameNotFoundException.class)
     public ResponseEntity<Object> exception(UsernameNotFoundException exception) {
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.notFound().build();
     }
 }

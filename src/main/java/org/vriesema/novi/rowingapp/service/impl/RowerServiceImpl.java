@@ -26,4 +26,16 @@ public class RowerServiceImpl implements RowerService {
     public List<Rower> getRowers() {
         return rowerRepository.findAll();
     }
+
+    @Override
+    public void addRower(Rower rower) {
+        rowerRepository.save(rower);
+    }
+
+    @Override
+    public Object findRowerByCrewId(long crewId) {
+        return rowerRepository.findByCrewId(crewId);
+
+    }
+
 }

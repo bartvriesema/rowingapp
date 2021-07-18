@@ -5,5 +5,12 @@ package org.vriesema.novi.rowingapp.service;
  * @author:   bartvriesema
  */
 
+import org.vriesema.novi.rowingapp.model.rowingclub.Crew;
+
+import java.util.List;
+
 public interface CrewService {
+    List<Crew> getCrews();
+
+    Object findCrewId(long crewId);
 }
