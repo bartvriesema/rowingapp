@@ -23,5 +23,35 @@ public class TrainingType {
     @Column
     private int upperHeartRate;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public int getLowerHeartRate() {
+        return lowerHeartRate;
+    }
+
+    public void setLowerHeartRate(int lowerHeartRate) {
+        this.lowerHeartRate = lowerHeartRate;
+    }
+
+    public int getUpperHeartRate() {
+        return upperHeartRate;
+    }
+
+    public void setUpperHeartRate(int upperHeartRate) {
+        this.upperHeartRate = upperHeartRate;
+    }
 }

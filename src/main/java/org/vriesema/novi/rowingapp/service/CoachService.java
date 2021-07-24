@@ -5,5 +5,10 @@ package org.vriesema.novi.rowingapp.service;
  * @author:   bartvriesema
  */
 
+import org.vriesema.novi.rowingapp.model.rowingclub.Coach;
+
+import java.util.List;
+
 public interface CoachService {
+    List<Coach> getCoaches();
 }

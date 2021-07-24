@@ -27,7 +27,7 @@ public class RowerController {
     }
 
     @GetMapping(value = "/{crew}")
-    public ResponseEntity<Object> getRowerByCrew(@PathVariable("crew") long crewId) {
+    public ResponseEntity<Object> getRowerByCrewId(@PathVariable("crew") long crewId) {
 
         return ResponseEntity.ok().body(rowerService.findRowerByCrewId(crewId));
 

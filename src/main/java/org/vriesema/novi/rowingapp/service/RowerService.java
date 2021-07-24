@@ -15,7 +15,5 @@ public interface RowerService {
 
     void addRower(Rower rower);
 
-    // Object findRowerByCrewId(int crewId);
-
     Object findRowerByCrewId(long crewId);
 }

@@ -21,4 +21,27 @@ public class TrainingSchedule {
     @OneToMany
     private List<TrainingSession> trainingSessions;
 
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    public Crew getCrew() {
+        return crew;
+    }
+
+    public void setCrew(Crew crew) {
+        this.crew = crew;
+    }
+
+    public List<TrainingSession> getTrainingSessions() {
+        return trainingSessions;
+    }
+
+    public void setTrainingSessions(List<TrainingSession> trainingSessions) {
+        this.trainingSessions = trainingSessions;
+    }
 }

@@ -7,8 +7,11 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.vriesema.novi.rowingapp.model.rowingclub.Coach;
 import org.vriesema.novi.rowingapp.repository.CoachRepository;
 import org.vriesema.novi.rowingapp.service.CoachService;
+
+import java.util.List;
 
 @Service
 public class CoachServiceImpl implements CoachService {
@@ -18,5 +21,10 @@ public class CoachServiceImpl implements CoachService {
     @Autowired
     public CoachServiceImpl(CoachRepository repository) {
         this.coachRepository = repository;
+    }
+
+    @Override
+    public List<Coach> getCoaches() {
+        return coachRepository.findAll();
     }
 }
