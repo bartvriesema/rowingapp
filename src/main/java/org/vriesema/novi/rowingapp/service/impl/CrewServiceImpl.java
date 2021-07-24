@@ -17,7 +17,7 @@ import java.util.Optional;
 @Service
 public class CrewServiceImpl implements CrewService {
 
-    private CrewRepository crewRepository;
+    private final CrewRepository crewRepository;
 
     @Autowired
     public CrewServiceImpl(CrewRepository repository) {

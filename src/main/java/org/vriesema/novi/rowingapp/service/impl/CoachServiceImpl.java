@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class CoachServiceImpl implements CoachService {
 
-    private CoachRepository coachRepository;
+    private final CoachRepository coachRepository;
 
     @Autowired
     public CoachServiceImpl(CoachRepository repository) {

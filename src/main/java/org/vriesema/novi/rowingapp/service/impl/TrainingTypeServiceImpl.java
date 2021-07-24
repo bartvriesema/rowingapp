@@ -11,7 +11,7 @@ import org.vriesema.novi.rowingapp.service.TrainingTypeService;
 
 public class TrainingTypeServiceImpl implements TrainingTypeService {
 
-    private TrainingTypeRepository trainingTypeRepository;
+    private final TrainingTypeRepository trainingTypeRepository;
 
     @Autowired
     public TrainingTypeServiceImpl(TrainingTypeRepository repository) {

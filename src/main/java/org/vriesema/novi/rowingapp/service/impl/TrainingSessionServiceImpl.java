@@ -13,7 +13,7 @@ import org.vriesema.novi.rowingapp.service.TrainingSessionService;
 @Service
 public class TrainingSessionServiceImpl implements TrainingSessionService {
 
-    private TrainingSessionRepository trainingSessionRepository;
+    private final TrainingSessionRepository trainingSessionRepository;
 
     @Autowired
     public TrainingSessionServiceImpl(TrainingSessionRepository repository) {

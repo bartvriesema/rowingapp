@@ -5,8 +5,6 @@ package org.vriesema.novi.rowingapp.model.authentication;
  * @author:   bartvriesema
  */
 
-import org.vriesema.novi.rowingapp.model.rowingclub.Person;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,29 +17,22 @@ public class User {
     tussen een user en een person.
      */
 
-    @Id
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private boolean enabled = true;
-
-    @Column
-    private String email;
-
     @OneToMany(
             targetEntity = Authority.class,
             mappedBy = "username",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER)
-    private Set<Authority> authorities = new HashSet<>();
-
-    @OneToOne
-    Person person;
+    private final Set<Authority> authorities = new HashSet<>();
+    @Id
+    @Column(nullable = false, unique = true)
+    private String username;
+    @Column(nullable = false)
+    private String password;
+    @Column(nullable = false)
+    private boolean enabled = true;
+    @Column
+    private String email;
 
     public String getUsername() {
         return username;

@@ -14,7 +14,7 @@ import org.vriesema.novi.rowingapp.service.TrainingScheduleService;
 @Service
 public class TrainingScheduleServiceImpl implements TrainingScheduleService {
 
-    private TrainingScheduleRepository trainingScheduleRepository;
+    private final TrainingScheduleRepository trainingScheduleRepository;
 
     @Autowired
     public TrainingScheduleServiceImpl(TrainingScheduleRepository repository) {

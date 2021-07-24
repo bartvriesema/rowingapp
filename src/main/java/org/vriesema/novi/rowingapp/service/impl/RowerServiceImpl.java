@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 public class RowerServiceImpl implements RowerService {
-    private RowerRepository rowerRepository;
+    private final RowerRepository rowerRepository;
 
     @Autowired
     public RowerServiceImpl(RowerRepository repository) {

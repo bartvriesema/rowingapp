@@ -20,7 +20,7 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements org.vriesema.novi.rowingapp.service.UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository repository) {

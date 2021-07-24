@@ -26,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 //    @Autowired
 //    private UserService userService;
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public CustomUserDetailsService(UserService userService) {
