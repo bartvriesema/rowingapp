@@ -8,8 +8,12 @@ package org.vriesema.novi.rowingapp.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.vriesema.novi.rowingapp.controllers.dto.RowerDto;
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import org.vriesema.novi.rowingapp.service.RowerService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users/rowers")
@@ -23,6 +27,14 @@ public class RowerController {
 
     @GetMapping
     public ResponseEntity<Object> getRowers() {
+//        List<RowerDto> dtos = new ArrayList<>();
+//        List<Rower> rowerList = rowerService.getRowers();
+//
+//        for (Rower rower : rowerList) {
+//            dtos.add(RowerDto.fromRower(rower));
+//        }
+//
+//        return ResponseEntity.ok().body(dtos);
         return ResponseEntity.ok().body(rowerService.getRowers());
     }
 

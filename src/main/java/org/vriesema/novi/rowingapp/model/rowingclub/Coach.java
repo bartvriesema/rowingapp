@@ -12,24 +12,28 @@ import javax.persistence.Entity;
 public class Coach extends Person {
 
     @Column
-    private boolean isClubCoach;
+    private boolean ClubCoach;
 
     @Column
-    private boolean isCoach;
+    private boolean CrewCoach;
+
+    public Coach() {
+        this.CrewCoach = true;
+    }
 
     public boolean isClubCoach() {
-        return isClubCoach;
+        return ClubCoach;
     }
 
     public void setClubCoach(boolean clubCoach) {
-        isClubCoach = clubCoach;
+        this.ClubCoach = clubCoach;
     }
 
-    public boolean isCoach() {
-        return isCoach;
+    public boolean isCrewCoach() {
+        return CrewCoach;
     }
 
-    public void setCoach(boolean coach) {
-        isCoach = coach;
+    public void setCrewCoach(boolean crewCoach) {
+        this.CrewCoach = crewCoach;
     }
 }

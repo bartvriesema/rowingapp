@@ -16,9 +16,9 @@ INSERT INTO crew (id, crew_name) VALUES (1, 'Zware acht');
 INSERT INTO crew (id, crew_name) VALUES (2, 'Licht acht');
 INSERT INTO crew (id, crew_name) VALUES (3, 'Dames acht');
 
--- Insert default rowers
-INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_victory_points, date_of_birth) VALUES ('Rower', 'Bart', 'Vriesema', 'male', TRUE, 0, '1978-05-07');
-INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_victory_points, date_of_birth) VALUES ('Rower', 'Inge', 'van Putten', 'female', TRUE, 0, '1975-01-06');
+-- Insert default persons
+INSERT INTO person (dtype, first_name, last_name, gender, is_coach, is_club_coach, date_of_birth) VALUES ('Coach', 'Bart', 'Vriesema', 'male', TRUE, TRUE, '1978-05-07');
+INSERT INTO person (dtype, first_name, last_name, gender, is_coach, is_club_coach, date_of_birth) VALUES ('Coach', 'Inge', 'van Putten', 'female', TRUE, FALSE, '1975-01-06');
 INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_victory_points, date_of_birth, crew_id) VALUES ('Rower', 'Melvin', 'Twellaar', 'male', TRUE, 7, '1996-12-23', 1);
 INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_victory_points, date_of_birth, crew_id) VALUES ('Rower', 'Stef', 'Broenink', 'male', TRUE, 12, '1980-09-19', 1);
 INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_victory_points, date_of_birth, crew_id) VALUES ('Rower', 'Ilse', 'Paulis', 'female', TRUE, 13, '1993-07-30', 3);

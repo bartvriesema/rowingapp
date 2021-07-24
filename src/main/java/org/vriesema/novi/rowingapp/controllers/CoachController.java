@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.vriesema.novi.rowingapp.controllers.dto.CoachDto;
-import org.vriesema.novi.rowingapp.controllers.dto.CrewDto;
 import org.vriesema.novi.rowingapp.model.rowingclub.Coach;
-import org.vriesema.novi.rowingapp.model.rowingclub.Crew;
 import org.vriesema.novi.rowingapp.service.CoachService;
-import org.vriesema.novi.rowingapp.service.CrewService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +30,22 @@ public class CoachController {
 
     @GetMapping
     public ResponseEntity<Object> getCoaches() {
-        return ResponseEntity.ok().body(coachService.getCoaches());
+        List<CoachDto> dtos = new ArrayList<>();
+        List<Coach> coachList = coachService.getCoaches();
+        for (Coach coach : coachList) {
+            dtos.add(CoachDto.fromCoach(coach));
+        }
+        return ResponseEntity.ok().body(dtos);
+    }
+
+    @GetMapping(value = "/clubcoaches")
+    public ResponseEntity<Object> getClubCoaches() {
+        List<CoachDto> dtos = new ArrayList<>();
+        List<Coach> coachList = coachService.getClubCoaches();
+        for (Coach coach : coachList) {
+            dtos.add(CoachDto.fromCoach(coach));
+        }
+        return ResponseEntity.ok().body(dtos);
+
     }
 }

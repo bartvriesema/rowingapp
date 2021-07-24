@@ -86,4 +86,12 @@ public class Person {
     public void setCrew(Crew crew) {
         this.crew = crew;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
