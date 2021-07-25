@@ -26,12 +26,16 @@ public class CoachServiceImpl implements CoachService {
     @Override
     public List<Coach> getCoaches() {
         return coachRepository.findAll();
-
     }
 
     @Override
     public List<Coach> getClubCoaches() {
         return coachRepository.findByClubCoachTrue();
+    }
+
+    @Override
+    public void addCoach(Coach coach) {
+        coachRepository.save(coach);
     }
 
 

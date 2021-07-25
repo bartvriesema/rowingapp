@@ -13,4 +13,6 @@ public interface CoachService {
     List<Coach> getCoaches();
 
     List<Coach> getClubCoaches();
+
+    void addCoach(Coach coach);
 }

@@ -18,7 +18,7 @@ public class TrainingSchedule {
     @OneToOne
     private Crew crew;
 
-    @OneToMany
+    @OneToMany (mappedBy = "trainingSchedule")
     private List<TrainingSession> trainingSessions;
 
     public long getId() {

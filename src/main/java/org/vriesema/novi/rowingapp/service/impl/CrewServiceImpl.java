@@ -34,5 +34,10 @@ public class CrewServiceImpl implements CrewService {
         return crewRepository.findById(crewId);
     }
 
+    @Override
+    public void addCrew(Crew crew) {
+        crewRepository.save(crew);
+    }
+
 
 }

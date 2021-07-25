@@ -11,7 +11,8 @@ import javax.persistence.*;
 public class TrainingType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private long id;
 
     @Column

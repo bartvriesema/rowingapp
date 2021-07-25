@@ -15,6 +15,7 @@ public class Crew {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     long id;
 
     @Column

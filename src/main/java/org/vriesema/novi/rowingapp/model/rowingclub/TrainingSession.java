@@ -5,6 +5,8 @@ package org.vriesema.novi.rowingapp.model.rowingclub;
  * @author:   bartvriesema
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -81,6 +83,7 @@ public class TrainingSession {
         this.trainingType = trainingType;
     }
 
+    @JsonIgnore
     public TrainingSchedule getTrainingSchedule() {
         return trainingSchedule;
     }

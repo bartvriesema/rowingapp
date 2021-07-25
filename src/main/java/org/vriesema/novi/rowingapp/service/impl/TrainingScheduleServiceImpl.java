@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.vriesema.novi.rowingapp.repository.TrainingScheduleRepository;
 import org.vriesema.novi.rowingapp.service.TrainingScheduleService;
 
-
 @Service
 public class TrainingScheduleServiceImpl implements TrainingScheduleService {
 
@@ -22,4 +21,13 @@ public class TrainingScheduleServiceImpl implements TrainingScheduleService {
     }
 
 
+    @Override
+    public Object getTrainingSchedules() {
+        return trainingScheduleRepository.findAll();
+    }
+
+    @Override
+    public Object getTrainingScheduleByCrewId(long crewId) {
+        return trainingScheduleRepository.findByCrewId(crewId);
+    }
 }

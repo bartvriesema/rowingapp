@@ -10,4 +10,5 @@ import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSchedule;
 
 public interface TrainingScheduleRepository extends JpaRepository<TrainingSchedule, Long> {
 
+    Object findByCrewId(long crewId);
 }

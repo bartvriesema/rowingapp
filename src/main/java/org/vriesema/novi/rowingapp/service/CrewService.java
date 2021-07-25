@@ -14,4 +14,6 @@ public interface CrewService {
     List<Crew> getCrews();
 
     Optional<Crew> findCrewId(long crewId);
+
+    void addCrew(Crew crew);
 }

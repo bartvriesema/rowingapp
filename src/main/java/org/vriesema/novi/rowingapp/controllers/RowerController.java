@@ -23,14 +23,6 @@ public class RowerController {
 
     @GetMapping
     public ResponseEntity<Object> getRowers() {
-//        List<RowerDto> dtos = new ArrayList<>();
-//        List<Rower> rowerList = rowerService.getRowers();
-//
-//        for (Rower rower : rowerList) {
-//            dtos.add(RowerDto.fromRower(rower));
-//        }
-//
-//        return ResponseEntity.ok().body(dtos);
         return ResponseEntity.ok().body(rowerService.getRowers());
     }
 
