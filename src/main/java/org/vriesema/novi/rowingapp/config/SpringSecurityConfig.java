@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.config;
-/*
- * @created:  2021-07-03
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

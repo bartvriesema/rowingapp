@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
-/*
- * @created:  2021-07-10
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.utils;
-/*
- * @created:  2021-07-03
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

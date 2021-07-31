@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.controllers;
-/*
- * @created:  2021-07-11
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

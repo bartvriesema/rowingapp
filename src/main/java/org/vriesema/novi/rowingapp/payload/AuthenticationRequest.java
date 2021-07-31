@@ -1,9 +1,5 @@
 package org.vriesema.novi.rowingapp.payload;
-/*
- * @created:  2021-07-06
- * @project:  rowingapp
- * @author:   bartvriesema
- */
+
 
 public class AuthenticationRequest {
     private String username;

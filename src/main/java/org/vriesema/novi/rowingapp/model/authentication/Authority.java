@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.model.authentication;
-/*
- * @created:  2021-07-03
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import javax.persistence.*;
 import java.io.Serializable;

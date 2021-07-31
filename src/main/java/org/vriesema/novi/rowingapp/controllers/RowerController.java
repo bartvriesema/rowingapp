@@ -1,13 +1,9 @@
 package org.vriesema.novi.rowingapp.controllers;
-/*
- * @created:  2021-07-11
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.vriesema.novi.rowingapp.model.rowingclub.Heartrate;
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import org.vriesema.novi.rowingapp.service.RowerService;
 
@@ -26,16 +22,25 @@ public class RowerController {
         return ResponseEntity.ok().body(rowerService.getRowers());
     }
 
-    @GetMapping(value = "/{crew}")
+    @GetMapping(value = "/crew/{crew}")
     public ResponseEntity<Object> getRowerByCrewId(@PathVariable("crew") long crewId) {
-
         return ResponseEntity.ok().body(rowerService.findRowerByCrewId(crewId));
-
     }
 
     @PostMapping
     public ResponseEntity<Object> addRower(@RequestBody Rower rower) {
         rowerService.addRower(rower);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> getRowerById(@PathVariable("id") long rowerId) {
+        return ResponseEntity.ok().body(rowerService.findRowerById(rowerId));
+    }
+
+    @PostMapping(value = "/heartrate/{id}")
+    public ResponseEntity<Object> addHeartRate(@PathVariable("id") long rowerId, @RequestBody Heartrate heartRate) {
+        rowerService.addHeartrate(rowerId, heartRate);
         return ResponseEntity.noContent().build();
     }
 }

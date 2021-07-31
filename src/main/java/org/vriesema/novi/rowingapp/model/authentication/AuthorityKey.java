@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.model.authentication;
-/*
- * @created:  2021-07-10
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import java.io.Serializable;
 import java.util.Objects;

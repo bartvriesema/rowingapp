@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.service;
-/*
- * @created:  2021-07-03
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,19 +31,22 @@ public class CustomUserDetailsService implements UserDetailsService {
     //TODO Fix code below for own implementation
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        String password;
+        List<GrantedAuthority> grantedAuthorities;
         Optional<User> user = userService.getUser(username);
-        if (user == null) {
+        if (user.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
 
-        String password = user.get().getPassword();
-
+        password = user.get().getPassword();
         Set<Authority> authorities = user.get().getAuthorities();
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities = new ArrayList<>();
+
         for (Authority authority : authorities) {
             grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
         }
 
         return new org.springframework.security.core.userdetails.User(username, password, grantedAuthorities);
+
     }
 }

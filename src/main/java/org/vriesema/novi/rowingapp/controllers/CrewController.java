@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.vriesema.novi.rowingapp.model.rowingclub.Crew;
 import org.vriesema.novi.rowingapp.service.CrewService;
 
-/*
- * @created:  2021-07-11
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 @RestController
 @RequestMapping("/api/users/crews")

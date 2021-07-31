@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
-/*
- * @created:  2021-07-10
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.vriesema.novi.rowingapp.model.authentication.User;
 
@@ -12,9 +7,9 @@ import java.time.LocalDate;
 
 @Entity
 public class Person {
-    /*
-    Users en persons kunnen onafhankelijk van elkaar bestaan. Er kan een relatie gelegd worden
-    tussen een user en een person.
+    /**
+     * Users en persons kunnen onafhankelijk van elkaar bestaan. Er kan een relatie gelegd worden
+     * tussen een user en een person.
      */
 
     @Id

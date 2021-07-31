@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
-/*
- * @created:  2021-07-10
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +13,7 @@ public class TrainingSchedule {
     @OneToOne
     private Crew crew;
 
-    @OneToMany (mappedBy = "trainingSchedule")
+    @OneToMany(mappedBy = "trainingSchedule")
     private List<TrainingSession> trainingSessions;
 
     public long getId() {

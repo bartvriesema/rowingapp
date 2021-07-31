@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.service;
-/*
- * @created:  2021-07-03
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.vriesema.novi.rowingapp.model.authentication.Authority;
 import org.vriesema.novi.rowingapp.model.authentication.User;

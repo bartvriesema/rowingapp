@@ -1,12 +1,8 @@
 package org.vriesema.novi.rowingapp.service.impl;
-/*
- * @created:  2021-07-03
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.vriesema.novi.rowingapp.exceptions.AuthorityNotFoundException;
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
 import org.vriesema.novi.rowingapp.exceptions.UsernameNotFoundException;
 import org.vriesema.novi.rowingapp.model.authentication.Authority;
@@ -44,8 +40,6 @@ public class UserServiceImpl implements org.vriesema.novi.rowingapp.service.User
 
     @Override
     public String createUser(User user) {
-//        String randomString = RandomStringGenerator.generateAlphaNumeric(20); // TODO Check if this is still needed
-//        user.setApikey(randomString);
         User newUser = userRepository.save(user);
         return newUser.getUsername();
     }
@@ -57,32 +51,45 @@ public class UserServiceImpl implements org.vriesema.novi.rowingapp.service.User
 
     @Override
     public void updateUser(String username, User newUser) {
-        if (!userRepository.existsById(username)) throw new RecordNotFoundException();
-        User user = userRepository.findById(username).get();
+        Optional<User> optionalUser = userRepository.findById(username);
+        if (optionalUser.isEmpty()) throw new RecordNotFoundException();
+        User user = optionalUser.get();
         user.setPassword(newUser.getPassword());
         userRepository.save(user);
     }
 
     @Override
     public Set<Authority> getAuthorities(String username) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
-        User user = userRepository.findById(username).get();
+        Optional<User> optionalUser = userRepository.findById(username);
+        if (optionalUser.isEmpty()) throw new UsernameNotFoundException(username);
+        User user = optionalUser.get();
         return user.getAuthorities();
     }
 
     @Override
     public void addAuthority(String username, String authority) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
-        User user = userRepository.findById(username).get();
+        Optional<User> optionalUser = userRepository.findById(username);
+        if (optionalUser.isEmpty()) throw new UsernameNotFoundException(username);
+        User user = optionalUser.get();
         user.addAuthority(new Authority(username, authority));
         userRepository.save(user);
     }
 
     @Override
     public void removeAuthority(String username, String authority) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
-        User user = userRepository.findById(username).get();
-        Authority authorityToRemove = user.getAuthorities().stream().filter((a) -> a.getAuthority().equalsIgnoreCase(authority)).findAny().get();
+        Optional<User> optionalUser = userRepository.findById(username);
+        if (optionalUser.isEmpty()) throw new UsernameNotFoundException(username);
+        User user = optionalUser.get();
+        Optional<Authority> found = Optional.empty();
+
+        for (Authority a : user.getAuthorities()) {
+            if (a.getAuthority().equalsIgnoreCase(authority)) {
+                found = Optional.of(a);
+                break;
+            }
+        }
+        if (found.isEmpty()) throw new AuthorityNotFoundException(username);
+        Authority authorityToRemove = found.get();
         user.removeAuthority(authorityToRemove);
         userRepository.save(user);
     }

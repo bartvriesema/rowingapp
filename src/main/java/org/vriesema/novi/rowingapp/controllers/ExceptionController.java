@@ -1,9 +1,4 @@
 package org.vriesema.novi.rowingapp.controllers;
-/*
- * @created:  2021-07-06
- * @project:  rowingapp
- * @author:   bartvriesema
- */
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
