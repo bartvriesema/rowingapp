@@ -43,5 +43,10 @@ public class TrainingController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping(value = "/sessions")
+    public ResponseEntity<Object> getTrainingSessions() {
+        return ResponseEntity.ok().body(trainingSessionService.getTrainingSessions());
+    }
+
 
 }

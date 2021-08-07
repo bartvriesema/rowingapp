@@ -8,7 +8,7 @@ public class TrainingType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
-    private long id;
+    private long trainingTypeId;
 
     @Column
     private String shortDescription;
@@ -19,12 +19,12 @@ public class TrainingType {
     @Column
     private int upperHeartRate;
 
-    public long getId() {
-        return id;
+    public long getTrainingTypeId() {
+        return trainingTypeId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTrainingTypeId(long id) {
+        this.trainingTypeId = id;
     }
 
     public String getShortDescription() {

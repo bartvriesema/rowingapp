@@ -14,5 +14,10 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
     public TrainingSessionServiceImpl(TrainingSessionRepository repository) {
         this.trainingSessionRepository = repository;
     }
+
+    @Override
+    public Object getTrainingSessions() {
+        return trainingSessionRepository.findAll();
+    }
 }
 

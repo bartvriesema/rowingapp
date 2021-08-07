@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface CrewService {
     List<Crew> getCrews();
 
-    Optional<Crew> findCrewId(long crewId);
+    Optional<Crew> findByCrewId(long crewId);
 
     void addCrew(Crew crew);
 }

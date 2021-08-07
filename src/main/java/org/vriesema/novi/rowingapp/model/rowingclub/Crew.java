@@ -20,7 +20,7 @@ public class Crew {
     List<Person> crewMembers;
 
     @OneToMany(mappedBy = "crew")
-    List<Results> results;
+    List<Result> results;
 
     public long getId() {
         return id;
@@ -48,11 +48,11 @@ public class Crew {
     }
 
     @JsonIgnore
-    public List<Results> getResults() {
+    public List<Result> getResults() {
         return results;
     }
 
-    public void setResults(List<Results> results) {
+    public void setResults(List<Result> results) {
         this.results = results;
     }
 }

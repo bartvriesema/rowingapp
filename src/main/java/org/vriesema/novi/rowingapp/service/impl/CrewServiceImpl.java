@@ -25,7 +25,7 @@ public class CrewServiceImpl implements CrewService {
     }
 
     @Override
-    public Optional<Crew> findCrewId(long crewId) {
+    public Optional<Crew> findByCrewId(long crewId) {
         return crewRepository.findById(crewId);
     }
 

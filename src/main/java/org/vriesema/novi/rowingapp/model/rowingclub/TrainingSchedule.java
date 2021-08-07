@@ -8,7 +8,7 @@ public class TrainingSchedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long trainingScheduleId;
 
     @OneToOne
     private Crew crew;
@@ -16,12 +16,12 @@ public class TrainingSchedule {
     @OneToMany(mappedBy = "trainingSchedule")
     private List<TrainingSession> trainingSessions;
 
-    public long getId() {
-        return Id;
+    public long getTrainingScheduleId() {
+        return trainingScheduleId;
     }
 
-    public void setId(long id) {
-        Id = id;
+    public void setTrainingScheduleId(long trainingScheduleId) {
+        this.trainingScheduleId = trainingScheduleId;
     }
 
     public Crew getCrew() {

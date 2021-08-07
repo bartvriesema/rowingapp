@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface RowerRepository extends JpaRepository<Rower, Long> {
 
-    List<Rower> findByCrewId(long crewId);
+    List<Rower> findRowerByCrewId(long crewId);
 
 }

@@ -10,7 +10,7 @@ public class TrainingSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long trainingSessionId;
 
     @Column
     private LocalDateTime startTime;
@@ -30,12 +30,12 @@ public class TrainingSession {
     @ManyToOne
     private TrainingSchedule trainingSchedule;
 
-    public long getId() {
-        return Id;
+    public long getTrainingSessionId() {
+        return trainingSessionId;
     }
 
-    public void setId(long id) {
-        Id = id;
+    public void setTrainingSessionId(long trainingSessionId) {
+        this.trainingSessionId = trainingSessionId;
     }
 
     public LocalDateTime getStartTime() {

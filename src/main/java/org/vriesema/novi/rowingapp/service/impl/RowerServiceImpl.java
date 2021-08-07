@@ -35,7 +35,7 @@ public class RowerServiceImpl implements RowerService {
 
     @Override
     public Object findRowerByCrewId(long crewId) {
-        return rowerRepository.findByCrewId(crewId);
+        return rowerRepository.findRowerByCrewId(crewId);
     }
 
     @Override

@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Results {
+public class Result {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long resultId;
 
     @Column
     private LocalDate resultDate;
@@ -25,12 +25,12 @@ public class Results {
     @ManyToOne
     private Crew crew;
 
-    public long getId() {
-        return id;
+    public long getResultId() {
+        return resultId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setResultId(long id) {
+        this.resultId = id;
     }
 
     public LocalDate getResultDate() {

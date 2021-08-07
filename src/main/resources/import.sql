@@ -35,20 +35,23 @@ INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_vi
 INSERT INTO person (dtype, first_name, last_name, gender, is_rower, number_of_victory_points, date_of_birth, crew_id) VALUES ('Rower', 'Marieke', 'Keijser', 'female', TRUE, 6, '1997-01-21', 3);
 
 -- Insert default training session
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 1, 1);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 1, 2);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 1, 3);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 2, 1);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 2, 2);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 2, 3);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 3, 1);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 3, 2);
-INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_id, training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 3, 3);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 1, 1);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 1, 2);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 1, 3);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 2, 1);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 2, 2);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 2, 3);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 3, 1);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 3, 2);
+INSERT INTO training_session (start_time, end_time, short_description, long_description, training_schedule_training_schedule_id, training_type_training_type_id) VALUES ('2021-07-01 12:00', '2021-07-01 14:00', 'Korte tekst', 'Veel langere tekst', 3, 3);
 
--- Insert heartrates
+-- Insert heart rates
 INSERT INTO heartrate (heart_rate, heart_rate_date, rower_person_id) VALUES (60, '2021-07-20', 3);
 INSERT INTO heartrate (heart_rate, heart_rate_date, rower_person_id) VALUES (63, '2021-07-21', 3);
 INSERT INTO heartrate (heart_rate, heart_rate_date, rower_person_id) VALUES (60, '2021-07-22', 3);
 INSERT INTO heartrate (heart_rate, heart_rate_date, rower_person_id) VALUES (62, '2021-07-23', 3);
 INSERT INTO heartrate (heart_rate, heart_rate_date, rower_person_id) VALUES (61, '2021-07-24', 3);
 
+-- Insert results
+INSERT INTO result (description, distance, result_date, time_in_seconds, crew_id) VALUES ('Winterwedstrijd', 5000, '2021-02-02', 1800, 1);
+INSERT INTO result (description, distance, result_date, time_in_seconds, crew_id) VALUES ('Holland Beker', 2000, '2021-05-07', 420, 2)
