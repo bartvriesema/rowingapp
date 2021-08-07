@@ -54,4 +54,7 @@ INSERT INTO heartrate (heart_rate, heart_rate_date, rower_person_id) VALUES (61,
 
 -- Insert results
 INSERT INTO result (description, distance, result_date, time_in_seconds, crew_id) VALUES ('Winterwedstrijd', 5000, '2021-02-02', 1800, 1);
-INSERT INTO result (description, distance, result_date, time_in_seconds, crew_id) VALUES ('Holland Beker', 2000, '2021-05-07', 420, 2)
+INSERT INTO result (description, distance, result_date, time_in_seconds, crew_id) VALUES ('Holland Beker', 2000, '2021-05-07', 420, 2);
+
+-- Insert training report
+INSERT INTO training_report (training_report_text, training_session_training_session_id) VALUES ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1);

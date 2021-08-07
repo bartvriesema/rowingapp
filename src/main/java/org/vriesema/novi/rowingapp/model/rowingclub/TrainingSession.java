@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class TrainingSession {
@@ -21,7 +22,7 @@ public class TrainingSession {
     @Column
     private String shortDescription;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     @OneToOne
@@ -29,6 +30,9 @@ public class TrainingSession {
 
     @ManyToOne
     private TrainingSchedule trainingSchedule;
+
+    @OneToMany(mappedBy = "trainingSession")
+    private List<TrainingReport> trainingReportList;
 
     public long getTrainingSessionId() {
         return trainingSessionId;
@@ -85,5 +89,13 @@ public class TrainingSession {
 
     public void setTrainingSchedule(TrainingSchedule trainingSchedule) {
         this.trainingSchedule = trainingSchedule;
+    }
+
+    public List<TrainingReport> getTrainingReportList() {
+        return trainingReportList;
+    }
+
+    public void setTrainingReportList(List<TrainingReport> trainingReportList) {
+        this.trainingReportList = trainingReportList;
     }
 }

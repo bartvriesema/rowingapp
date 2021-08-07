@@ -13,8 +13,4 @@ public class BaseController {
         return "Welcome to the rowing application";
     }
 
-    @GetMapping(value = "/users/")
-    public String greetingAuthenticated() {
-        return "User is authenticated";
-    }
 }

@@ -47,7 +47,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        //JWT token authentication
         http
                 .csrf().disable()
                 .authorizeRequests()

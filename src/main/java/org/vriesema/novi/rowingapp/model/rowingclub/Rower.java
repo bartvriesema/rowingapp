@@ -11,13 +11,13 @@ import java.util.List;
 public class Rower extends Person {
 
     @Column
-    int numberOfVictoryPoints;
+    private int numberOfVictoryPoints;
 
     @OneToMany(mappedBy = "rower")
-    List<Heartrate> heartrateList;
+    private List<Heartrate> heartrateList;
 
     @Column
-    boolean isRower;
+    private boolean isRower;
 
     public int getNumberOfVictoryPoints() {
         return numberOfVictoryPoints;

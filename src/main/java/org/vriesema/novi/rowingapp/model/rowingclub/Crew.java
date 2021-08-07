@@ -11,16 +11,16 @@ public class Crew {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
-    long id;
+    private long id;
 
     @Column
-    String crewName;
+    private String crewName;
 
     @OneToMany(mappedBy = "crew")
-    List<Person> crewMembers;
+    private List<Person> crewMembers;
 
     @OneToMany(mappedBy = "crew")
-    List<Result> results;
+    private List<Result> results;
 
     public long getId() {
         return id;

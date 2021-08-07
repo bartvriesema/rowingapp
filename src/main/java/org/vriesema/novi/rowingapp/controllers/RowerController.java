@@ -22,8 +22,8 @@ public class RowerController {
         return ResponseEntity.ok().body(rowerService.getRowers());
     }
 
-    @GetMapping(value = "/crew/{crew}")
-    public ResponseEntity<Object> getRowerByCrewId(@PathVariable("crew") long crewId) {
+    @GetMapping(value = "/crew/{crewid}")
+    public ResponseEntity<Object> getRowerByCrewId(@PathVariable("crewid") long crewId) {
         return ResponseEntity.ok().body(rowerService.findRowerByCrewId(crewId));
     }
 
@@ -33,18 +33,18 @@ public class RowerController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Object> getRowerById(@PathVariable("id") long rowerId) {
+    @GetMapping(value = "/{rowerid}")
+    public ResponseEntity<Object> getRowerById(@PathVariable("rowerid") long rowerId) {
         return ResponseEntity.ok().body(rowerService.findRowerById(rowerId));
     }
 
-    @GetMapping(value = "/heartrate/{rower}")
-    public ResponseEntity<Object> getHeartrateByRowerId(@PathVariable("rower") long rowerId) {
+    @GetMapping(value = "/heartrate/{rowerid}")
+    public ResponseEntity<Object> getHeartrateByRowerId(@PathVariable("rowerid") long rowerId) {
         return ResponseEntity.ok().body(rowerService.getHeartrateList(rowerId));
     }
 
-    @PostMapping(value = "/heartrate/{rower}")
-    public ResponseEntity<Object> addHeartRate(@PathVariable("rower") long rowerId, @RequestBody Heartrate heartRate) {
+    @PostMapping(value = "/heartrate/{rowerid}")
+    public ResponseEntity<Object> addHeartRate(@PathVariable("rowerid") long rowerId, @RequestBody Heartrate heartRate) {
         rowerService.addHeartrate(rowerId, heartRate);
         return ResponseEntity.noContent().build();
     }

@@ -8,17 +8,17 @@ public class Heartrate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long heartRateId;
+    private long heartRateId;
 
     @Column
-    LocalDate heartRateDate;
+    private LocalDate heartRateDate;
 
     @Column
-    int heartRate;
+    private int heartRate;
 
     @ManyToOne
     @JoinColumn(name="rower_person_id")
-    Rower rower;
+    private Rower rower;
 
     public LocalDate getHeartRateDate() {
         return heartRateDate;

@@ -27,8 +27,8 @@ public class TrainingController {
         return ResponseEntity.ok().body(trainingScheduleService.getTrainingSchedules());
     }
 
-    @GetMapping(value = "/{crew}")
-    public ResponseEntity<Object> getTrainingScheduleByCrewId(@PathVariable("crew") long crewId) {
+    @GetMapping(value = "/{crewid}")
+    public ResponseEntity<Object> getTrainingScheduleByCrewId(@PathVariable("crewid") long crewId) {
         return ResponseEntity.ok().body(trainingScheduleService.getTrainingScheduleByCrewId(crewId));
     }
 
@@ -47,6 +47,11 @@ public class TrainingController {
     public ResponseEntity<Object> getTrainingSessions() {
         return ResponseEntity.ok().body(trainingSessionService.getTrainingSessions());
     }
+
+    // TODO GET training sessions by crewId
+    // TODO create training session POST
+    // TODO create training schedule POST
+
 
 
 }
