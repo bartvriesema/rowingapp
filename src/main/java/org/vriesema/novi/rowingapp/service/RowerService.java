@@ -16,4 +16,6 @@ public interface RowerService {
     Object findRowerById(long rowerId);
 
     void addHeartrate(long rowerId, Heartrate heartRate);
+
+    List<Heartrate> getHeartrateList(long rowerId);
 }

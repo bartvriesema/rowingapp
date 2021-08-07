@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Heartrate {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long heartRateId;
 
     @Column
@@ -17,6 +17,7 @@ public class Heartrate {
     int heartRate;
 
     @ManyToOne
+    @JoinColumn(name="rower_person_id")
     Rower rower;
 
     public LocalDate getHeartRateDate() {

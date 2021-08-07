@@ -47,7 +47,15 @@ public class RowerServiceImpl implements RowerService {
     public void addHeartrate(long rowerId, Heartrate heartRate) {
         Optional<Rower> rower = rowerRepository.findById(rowerId);
         if (rower.isEmpty()) throw new RecordNotFoundException();
+        heartRate.setRower(rower.get());
         heartrateRepository.save(heartRate);
+    }
+
+    @Override
+    public List<Heartrate> getHeartrateList(long rowerId) {
+        Optional<Rower> rower = rowerRepository.findById(rowerId);
+        if(rower.isEmpty()) throw new RecordNotFoundException();
+        return heartrateRepository.findByRower(rower.get());
     }
 }
 

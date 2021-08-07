@@ -7,7 +7,7 @@ import java.util.List;
 public class TrainingSchedule {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
 
     @OneToOne

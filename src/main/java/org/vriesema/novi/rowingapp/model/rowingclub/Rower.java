@@ -1,5 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -29,6 +31,7 @@ public class Rower extends Person {
         return heartrateList;
     }
 
+    @JsonIgnore
     public void setHeartrateList(List<Heartrate> heartrateList) {
         this.heartrateList = heartrateList;
     }
