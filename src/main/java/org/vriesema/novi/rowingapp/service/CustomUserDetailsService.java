@@ -18,9 +18,6 @@ import java.util.Set;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-//    @Autowired
-//    private UserService userService;
-
     private final UserService userService;
 
     @Autowired
@@ -28,22 +25,21 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userService = userService;
     }
 
-    //TODO Fix code below for own implementation
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String password;
         List<GrantedAuthority> grantedAuthorities;
         Optional<User> user = userService.getUser(username);
-        if (user.isEmpty()) {
+        if (user.isPresent()) {
+            password = user.get().getPassword();
+            Set<Authority> authorities = user.get().getAuthorities();
+            grantedAuthorities = new ArrayList<>();
+
+            for (Authority authority : authorities) {
+                grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+            }
+        } else {
             throw new UsernameNotFoundException(username);
-        }
-
-        password = user.get().getPassword();
-        Set<Authority> authorities = user.get().getAuthorities();
-        grantedAuthorities = new ArrayList<>();
-
-        for (Authority authority : authorities) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
         }
 
         return new org.springframework.security.core.userdetails.User(username, password, grantedAuthorities);

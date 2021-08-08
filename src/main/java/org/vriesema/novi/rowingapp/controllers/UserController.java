@@ -3,12 +3,10 @@ package org.vriesema.novi.rowingapp.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.vriesema.novi.rowingapp.exceptions.BadRequestException;
 import org.vriesema.novi.rowingapp.model.authentication.User;
 import org.vriesema.novi.rowingapp.service.UserService;
 
-import java.net.URI;
 import java.util.Map;
 
 @RestController
@@ -33,12 +31,8 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<Object> createUser(@RequestBody User user) {
-        String newUsername = userService.createUser(user);
-
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{username}")
-                .buildAndExpand(newUsername).toUri();
-
-        return ResponseEntity.created(location).build();
+        userService.createUser(user);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping(value = "/{username}")
