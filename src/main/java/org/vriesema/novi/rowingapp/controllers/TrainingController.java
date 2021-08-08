@@ -3,6 +3,8 @@ package org.vriesema.novi.rowingapp.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSchedule;
+import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSession;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingType;
 import org.vriesema.novi.rowingapp.service.TrainingScheduleService;
 import org.vriesema.novi.rowingapp.service.TrainingSessionService;
@@ -11,6 +13,7 @@ import org.vriesema.novi.rowingapp.service.TrainingTypeService;
 @RestController
 @RequestMapping("/api/users/training")
 public class TrainingController {
+
     private final TrainingScheduleService trainingScheduleService;
     private final TrainingTypeService trainingTypeService;
     private final TrainingSessionService trainingSessionService;
@@ -25,6 +28,12 @@ public class TrainingController {
     @GetMapping
     public ResponseEntity<Object> getTrainingSchedules() {
         return ResponseEntity.ok().body(trainingScheduleService.getTrainingSchedules());
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> addTrainingSchedule(@RequestBody TrainingSchedule trainingSchedule) {
+        trainingScheduleService.addTrainingSchedule(trainingSchedule);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping(value = "/{crewid}")
@@ -48,10 +57,15 @@ public class TrainingController {
         return ResponseEntity.ok().body(trainingSessionService.getTrainingSessions());
     }
 
-    // TODO GET training sessions by crewId
-    // TODO create training session POST
-    // TODO create training schedule POST
+    @GetMapping(value = "/sessions/{crewid}")
+    public ResponseEntity<Object> getTrainingSessionByCrewId(@PathVariable("crewid") long crewId) {
+        return ResponseEntity.ok().body(trainingSessionService.getTrainingSessionByCrewId(crewId));
+    }
 
-
+    @PostMapping(value = "/sessions") // TODO return url to training session?
+    public ResponseEntity<Object> addTrainingSession(@RequestBody TrainingSession trainingSession) {
+        trainingSessionService.addTrainingSession(trainingSession);
+        return ResponseEntity.noContent().build();
+    }
 
 }

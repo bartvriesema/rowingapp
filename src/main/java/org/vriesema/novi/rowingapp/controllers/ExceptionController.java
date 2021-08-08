@@ -12,7 +12,6 @@ import org.vriesema.novi.rowingapp.exceptions.UsernameNotFoundException;
 @ControllerAdvice
 public class ExceptionController {
 
-
     @ExceptionHandler(value = RecordNotFoundException.class)
     public ResponseEntity<Object> exception(RecordNotFoundException exception) {
         return ResponseEntity.notFound().build();

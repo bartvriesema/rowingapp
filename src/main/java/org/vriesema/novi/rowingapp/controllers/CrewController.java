@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.vriesema.novi.rowingapp.model.rowingclub.Crew;
+import org.vriesema.novi.rowingapp.model.rowingclub.Result;
 import org.vriesema.novi.rowingapp.service.CrewService;
 import org.vriesema.novi.rowingapp.service.ResultService;
 
@@ -11,6 +12,7 @@ import org.vriesema.novi.rowingapp.service.ResultService;
 @RestController
 @RequestMapping("/api/users/crews")
 public class CrewController {
+
     private final CrewService crewService;
     private final ResultService resultService;
 
@@ -39,11 +41,19 @@ public class CrewController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping (value = "/results")
+    @GetMapping(value = "/results")
     public ResponseEntity<Object> getResults() {
         return ResponseEntity.ok().body(resultService.getResults());
     }
 
-    // TODO results by crew ID
-    // TODO add result POST
+    @PostMapping(value = "/results")
+    public ResponseEntity<Object> addResult(@RequestBody Result result) {
+        resultService.addResult(result);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/results/{crewid}")
+    public ResponseEntity<Object> getResultByCrewId(@PathVariable("crewid") long crewId) {
+        return ResponseEntity.ok().body(resultService.getResultByCrewId(crewId));
+    }
 }

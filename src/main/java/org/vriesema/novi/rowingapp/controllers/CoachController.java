@@ -9,13 +9,13 @@ import org.vriesema.novi.rowingapp.service.CoachService;
 @RestController
 @RequestMapping("/api/users/coaches")
 public class CoachController {
+
     private final CoachService coachService;
 
     @Autowired
     public CoachController(CoachService coachService) {
         this.coachService = coachService;
     }
-
 
     @GetMapping
     public ResponseEntity<Object> getCoaches() {

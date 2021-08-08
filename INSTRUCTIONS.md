@@ -34,4 +34,5 @@ Van iedere ploeg kunnen de resultaten van onderlinge sparwedstrijden en de natio
 * /api/users/training/{crewid}
 * /api/users/training/types
 * /api/users/training/sessions
+* /api/users/training/sessions/{crewid}
 

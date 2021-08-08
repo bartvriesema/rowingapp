@@ -30,7 +30,7 @@ public class CrewServiceImpl implements CrewService {
     }
 
     @Override
-    public void addCrew(Crew crew) {
+    public void addCrew(Crew crew) { // TODO automatically create training schedule? Check names?
         crewRepository.save(crew);
     }
 

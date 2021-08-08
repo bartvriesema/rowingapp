@@ -54,7 +54,7 @@ public class RowerServiceImpl implements RowerService {
     @Override
     public List<Heartrate> getHeartrateList(long rowerId) {
         Optional<Rower> rower = rowerRepository.findById(rowerId);
-        if(rower.isEmpty()) throw new RecordNotFoundException();
+        if (rower.isEmpty()) throw new RecordNotFoundException();
         return heartrateRepository.findByRower(rower.get());
     }
 }

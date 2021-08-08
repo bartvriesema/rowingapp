@@ -10,6 +10,7 @@ import org.vriesema.novi.rowingapp.service.RowerService;
 @RestController
 @RequestMapping("/api/users/rowers")
 public class RowerController {
+
     private final RowerService rowerService;
 
     @Autowired

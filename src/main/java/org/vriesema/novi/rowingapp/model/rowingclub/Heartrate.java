@@ -17,7 +17,7 @@ public class Heartrate {
     private int heartRate;
 
     @ManyToOne
-    @JoinColumn(name="rower_person_id")
+    @JoinColumn(name = "rower_person_id")
     private Rower rower;
 
     public LocalDate getHeartRateDate() {
