@@ -3,7 +3,7 @@ package org.vriesema.novi.rowingapp.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
-import org.vriesema.novi.rowingapp.model.rowingclub.Heartrate;
+import org.vriesema.novi.rowingapp.model.rowingclub.HeartRate;
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import org.vriesema.novi.rowingapp.repository.HeartrateRepository;
 import org.vriesema.novi.rowingapp.repository.RowerRepository;
@@ -29,22 +29,23 @@ public class RowerServiceImpl implements RowerService {
     }
 
     @Override
-    public void addRower(Rower rower) {
-        rowerRepository.save(rower);
+    public Long addRower(Rower rower) {
+        Rower newRower = rowerRepository.save(rower);
+        return newRower.getPersonId();
     }
 
     @Override
-    public Object findRowerByCrewId(long crewId) {
+    public List<Rower> findRowersByCrewId(long crewId) {
         return rowerRepository.findRowerByCrewId(crewId);
     }
 
     @Override
-    public Object findRowerById(long rowerId) {
+    public Optional<Rower> findRowerById(long rowerId) {
         return rowerRepository.findById(rowerId);
     }
 
     @Override
-    public void addHeartrate(long rowerId, Heartrate heartRate) {
+    public void addHeartRate(long rowerId, HeartRate heartRate) {
         Optional<Rower> rower = rowerRepository.findById(rowerId);
         if (rower.isEmpty()) throw new RecordNotFoundException();
         heartRate.setRower(rower.get());
@@ -52,7 +53,7 @@ public class RowerServiceImpl implements RowerService {
     }
 
     @Override
-    public List<Heartrate> getHeartrateList(long rowerId) {
+    public List<HeartRate> getHeartRateList(long rowerId) {
         Optional<Rower> rower = rowerRepository.findById(rowerId);
         if (rower.isEmpty()) throw new RecordNotFoundException();
         return heartrateRepository.findByRower(rower.get());

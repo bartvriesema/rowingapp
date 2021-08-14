@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Heartrate {
+public class HeartRate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long heartRateId;
+    private Long heartRateId;
 
     @Column
     private LocalDate heartRateDate;
@@ -17,7 +17,6 @@ public class Heartrate {
     private int heartRate;
 
     @ManyToOne
-    @JoinColumn(name = "rower_person_id")
     private Rower rower;
 
     public LocalDate getHeartRateDate() {
@@ -35,12 +34,20 @@ public class Heartrate {
     public void setHeartRate(int heartRate) {
         this.heartRate = heartRate;
     }
-
+    // TODO json ignore while fetching rower?
     public Rower getRower() {
         return rower;
     }
 
     public void setRower(Rower rower) {
         this.rower = rower;
+    }
+
+    public Long getHeartRateId() {
+        return heartRateId;
+    }
+
+    public void setHeartRateId(Long heartRateId) {
+        this.heartRateId = heartRateId;
     }
 }

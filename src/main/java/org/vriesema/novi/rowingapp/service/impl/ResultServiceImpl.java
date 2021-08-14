@@ -7,6 +7,8 @@ import org.vriesema.novi.rowingapp.model.rowingclub.Result;
 import org.vriesema.novi.rowingapp.repository.ResultRepository;
 import org.vriesema.novi.rowingapp.service.ResultService;
 
+import java.util.List;
+
 @Service
 public class ResultServiceImpl implements ResultService {
     private final ResultRepository resultRepository;
@@ -17,12 +19,12 @@ public class ResultServiceImpl implements ResultService {
     }
 
     @Override
-    public Object getResults() {
+    public List<Result> getResults() {
         return resultRepository.findAll();
     }
 
     @Override
-    public Object getResultByCrewId(long crewId) {
+    public List<Result> getResultsByCrewId(long crewId) {
         return resultRepository.findResultByCrew_Id(crewId);
     }
 

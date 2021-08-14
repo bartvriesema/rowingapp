@@ -8,7 +8,7 @@ public class Result {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long resultId;
+    private Long resultId;
 
     @Column
     private LocalDate resultDate;
@@ -25,11 +25,11 @@ public class Result {
     @ManyToOne
     private Crew crew;
 
-    public long getResultId() {
+    public Long getResultId() {
         return resultId;
     }
 
-    public void setResultId(long id) {
+    public void setResultId(Long id) {
         this.resultId = id;
     }
 

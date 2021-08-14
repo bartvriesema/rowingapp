@@ -1,5 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class TrainingSchedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long trainingScheduleId;
+    private Long trainingScheduleId;
 
     @OneToOne
     private Crew crew;
@@ -16,11 +18,11 @@ public class TrainingSchedule {
     @OneToMany(mappedBy = "trainingSchedule")
     private List<TrainingSession> trainingSessions;
 
-    public long getTrainingScheduleId() {
+    public Long getTrainingScheduleId() {
         return trainingScheduleId;
     }
 
-    public void setTrainingScheduleId(long trainingScheduleId) {
+    public void setTrainingScheduleId(Long trainingScheduleId) {
         this.trainingScheduleId = trainingScheduleId;
     }
 
@@ -32,6 +34,7 @@ public class TrainingSchedule {
         this.crew = crew;
     }
 
+    @JsonIgnore
     public List<TrainingSession> getTrainingSessions() {
         return trainingSessions;
     }

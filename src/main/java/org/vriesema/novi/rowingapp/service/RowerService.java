@@ -1,21 +1,22 @@
 package org.vriesema.novi.rowingapp.service;
 
-import org.vriesema.novi.rowingapp.model.rowingclub.Heartrate;
+import org.vriesema.novi.rowingapp.model.rowingclub.HeartRate;
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RowerService {
 
     List<Rower> getRowers();
 
-    void addRower(Rower rower);
+    Long addRower(Rower rower);
 
-    Object findRowerByCrewId(long crewId);
+    List<Rower> findRowersByCrewId(long crewId);
 
-    Object findRowerById(long rowerId);
+    Optional<Rower> findRowerById(long rowerId);
 
-    void addHeartrate(long rowerId, Heartrate heartRate);
+    void addHeartRate(long rowerId, HeartRate heartRate);
 
-    List<Heartrate> getHeartrateList(long rowerId);
+    List<HeartRate> getHeartRateList(long rowerId);
 }

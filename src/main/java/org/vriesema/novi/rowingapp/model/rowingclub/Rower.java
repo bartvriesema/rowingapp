@@ -14,7 +14,7 @@ public class Rower extends Person {
     private int numberOfVictoryPoints;
 
     @OneToMany(mappedBy = "rower")
-    private List<Heartrate> heartrateList;
+    private List<HeartRate> heartrateList;
 
     @Column
     private boolean isRower;
@@ -27,12 +27,12 @@ public class Rower extends Person {
         this.numberOfVictoryPoints = numberOfVictoryPoints;
     }
 
-    public List<Heartrate> getHeartrateList() {
+    public List<HeartRate> getHeartrateList() {
         return heartrateList;
     }
 
     @JsonIgnore
-    public void setHeartrateList(List<Heartrate> heartrateList) {
+    public void setHeartrateList(List<HeartRate> heartrateList) {
         this.heartrateList = heartrateList;
     }
 

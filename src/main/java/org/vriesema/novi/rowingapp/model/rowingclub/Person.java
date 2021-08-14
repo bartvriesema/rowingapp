@@ -15,7 +15,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
-    private long personId;
+    private Long personId;
 
     @Column(nullable = false)
     private String firstName;
@@ -83,11 +83,11 @@ public class Person {
         this.crew = crew;
     }
 
-    public long getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(long id) {
+    public void setPersonId(Long id) {
         this.personId = id;
     }
 }

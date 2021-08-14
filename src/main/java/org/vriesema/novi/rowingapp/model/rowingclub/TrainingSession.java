@@ -11,7 +11,7 @@ public class TrainingSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long trainingSessionId;
+    private Long trainingSessionId;
 
     @Column
     private LocalDateTime startTime;
@@ -34,11 +34,11 @@ public class TrainingSession {
     @OneToMany(mappedBy = "trainingSession")
     private List<TrainingReport> trainingReportList;
 
-    public long getTrainingSessionId() {
+    public Long getTrainingSessionId() {
         return trainingSessionId;
     }
 
-    public void setTrainingSessionId(long trainingSessionId) {
+    public void setTrainingSessionId(Long trainingSessionId) {
         this.trainingSessionId = trainingSessionId;
     }
 

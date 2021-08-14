@@ -9,7 +9,7 @@ public class TrainingReport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long trainingReportId;
+    private Long trainingReportId;
 
     @Column(columnDefinition = "TEXT")
     private String trainingReportText;
@@ -24,7 +24,7 @@ public class TrainingReport {
         return trainingReportId;
     }
 
-    public void setTrainingReportId(long trainingReportId) {
+    public void setTrainingReportId(Long trainingReportId) {
         this.trainingReportId = trainingReportId;
     }
 

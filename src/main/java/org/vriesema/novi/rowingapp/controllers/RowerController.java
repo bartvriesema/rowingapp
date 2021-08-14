@@ -3,9 +3,16 @@ package org.vriesema.novi.rowingapp.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.vriesema.novi.rowingapp.model.rowingclub.Heartrate;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.vriesema.novi.rowingapp.controllers.dtos.HeartRateDto;
+import org.vriesema.novi.rowingapp.controllers.dtos.RowerDto;
+import org.vriesema.novi.rowingapp.model.rowingclub.HeartRate;
 import org.vriesema.novi.rowingapp.model.rowingclub.Rower;
 import org.vriesema.novi.rowingapp.service.RowerService;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users/rowers")
@@ -20,33 +27,67 @@ public class RowerController {
 
     @GetMapping
     public ResponseEntity<Object> getRowers() {
-        return ResponseEntity.ok().body(rowerService.getRowers());
+        List<RowerDto> rowerDtos = new ArrayList<>();
+        List<Rower> rowerList = rowerService.getRowers();
+
+        for (Rower rower : rowerList) {
+            rowerDtos.add(RowerDto.fromRower(rower));
+        }
+
+        return ResponseEntity.ok().body(rowerDtos);
     }
 
     @GetMapping(value = "/crew/{crewid}")
-    public ResponseEntity<Object> getRowerByCrewId(@PathVariable("crewid") long crewId) {
-        return ResponseEntity.ok().body(rowerService.findRowerByCrewId(crewId));
+    public ResponseEntity<Object> getRowersByCrewId(@PathVariable("crewid") long crewId) {
+        if (rowerService.findRowersByCrewId(crewId).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<RowerDto> rowerDtos = new ArrayList<>();
+        List<Rower> rowerList = rowerService.findRowersByCrewId(crewId);
+
+        for (Rower rower : rowerList) {
+            rowerDtos.add(RowerDto.fromRower(rower));
+        }
+
+        return ResponseEntity.ok().body(rowerDtos);
     }
 
     @PostMapping
-    public ResponseEntity<Object> addRower(@RequestBody Rower rower) {
-        rowerService.addRower(rower);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Object> addRower(@RequestBody RowerDto rowerDto) {
+        Long newRowerId = rowerService.addRower(rowerDto.toRower());
+
+        URI rowerLink = ServletUriComponentsBuilder.fromCurrentRequest().path("/{rowerid}").buildAndExpand(newRowerId).toUri();
+
+        return ResponseEntity.created(rowerLink).build();
     }
 
     @GetMapping(value = "/{rowerid}")
     public ResponseEntity<Object> getRowerById(@PathVariable("rowerid") long rowerId) {
-        return ResponseEntity.ok().body(rowerService.findRowerById(rowerId));
+        if (rowerService.findRowerById(rowerId).isPresent()) {
+            Rower rower = rowerService.findRowerById(rowerId).get();
+            RowerDto rowerDto = RowerDto.fromRower(rower);
+            return ResponseEntity.ok().body(rowerDto);
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping(value = "/heartrate/{rowerid}")
     public ResponseEntity<Object> getHeartrateByRowerId(@PathVariable("rowerid") long rowerId) {
-        return ResponseEntity.ok().body(rowerService.getHeartrateList(rowerId));
+        List<HeartRate> heartRateList = rowerService.getHeartRateList(rowerId);
+        List<HeartRateDto> heartRateDtos = new ArrayList<>();
+
+        for (HeartRate heartRate : heartRateList) {
+            heartRateDtos.add(HeartRateDto.fromHeartRate(heartRate));
+        }
+
+        return ResponseEntity.ok().body(heartRateDtos);
     }
 
     @PostMapping(value = "/heartrate/{rowerid}")
-    public ResponseEntity<Object> addHeartRate(@PathVariable("rowerid") long rowerId, @RequestBody Heartrate heartRate) {
-        rowerService.addHeartrate(rowerId, heartRate);
+    public ResponseEntity<Object> addHeartRate(@PathVariable("rowerid") long rowerId, @RequestBody HeartRateDto heartRateDto) {
+        rowerService.addHeartRate(rowerId, heartRateDto.toHeartRate());
         return ResponseEntity.noContent().build();
     }
 }

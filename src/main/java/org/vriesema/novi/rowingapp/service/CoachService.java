@@ -9,5 +9,9 @@ public interface CoachService {
 
     List<Coach> getClubCoaches();
 
-    void addCoach(Coach coach);
+    Long addCoach(Coach coach);
+
+    void updateCoach(long coachId, Coach coach);
+
+    Coach updateFields(Coach newCoach, Coach currentCoach);
 }

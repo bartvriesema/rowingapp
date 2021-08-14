@@ -3,10 +3,12 @@ package org.vriesema.novi.rowingapp.service;
 
 import org.vriesema.novi.rowingapp.model.rowingclub.Result;
 
-public interface ResultService {
-    Object getResults();
+import java.util.List;
 
-    Object getResultByCrewId(long crewId);
+public interface ResultService {
+    List<Result> getResults();
+
+    List<Result> getResultsByCrewId(long crewId);
 
     void addResult(Result result);
 }

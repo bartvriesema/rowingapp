@@ -6,6 +6,8 @@ import org.vriesema.novi.rowingapp.model.rowingclub.TrainingType;
 import org.vriesema.novi.rowingapp.repository.TrainingTypeRepository;
 import org.vriesema.novi.rowingapp.service.TrainingTypeService;
 
+import java.util.List;
+
 @Service
 public class TrainingTypeServiceImpl implements TrainingTypeService {
 
@@ -17,7 +19,7 @@ public class TrainingTypeServiceImpl implements TrainingTypeService {
     }
 
     @Override
-    public Object getTrainingTypes() {
+    public List<TrainingType> getTrainingTypes() {
         return trainingTypeRepository.findAll();
     }
 

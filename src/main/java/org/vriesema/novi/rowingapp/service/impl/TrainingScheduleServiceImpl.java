@@ -6,6 +6,9 @@ import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSchedule;
 import org.vriesema.novi.rowingapp.repository.TrainingScheduleRepository;
 import org.vriesema.novi.rowingapp.service.TrainingScheduleService;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class TrainingScheduleServiceImpl implements TrainingScheduleService {
 
@@ -17,12 +20,12 @@ public class TrainingScheduleServiceImpl implements TrainingScheduleService {
     }
 
     @Override
-    public Object getTrainingSchedules() {
+    public List<TrainingSchedule> getTrainingSchedules() {
         return trainingScheduleRepository.findAll();
     }
 
     @Override
-    public Object getTrainingScheduleByCrewId(long crewId) {
+    public Optional<TrainingSchedule> getTrainingScheduleByCrewId(long crewId) {
         return trainingScheduleRepository.findByCrewId(crewId);
     }
 

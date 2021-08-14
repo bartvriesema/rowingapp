@@ -3,12 +3,21 @@ package org.vriesema.novi.rowingapp.service;
 
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSession;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface TrainingSessionService {
 
 
-    Object getTrainingSessions();
+    List<TrainingSession> getTrainingSessions();
 
-    Object getTrainingSessionByCrewId(long crewId);
+    List<TrainingSession> getTrainingSessionsByCrewId(long crewId);
 
-    void addTrainingSession(TrainingSession trainingSession);
+    Long addTrainingSession(TrainingSession trainingSession);
+
+    void updateTrainingSession(long trainingSessionId, TrainingSession newTrainingSession);
+
+    TrainingSession updateFields(TrainingSession newTrainingSession, TrainingSession currentTrainingSession);
+
+    Optional<TrainingSession> getTrainingSessionById(Long trainingSessionId);
 }
