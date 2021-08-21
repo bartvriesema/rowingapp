@@ -1,5 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -17,7 +19,11 @@ public class HeartRate {
     private int heartRate;
 
     @ManyToOne
+    @JsonBackReference(value = "rower")
     private Rower rower;
+
+    @Transient
+    private long averageHeartRate;
 
     public LocalDate getHeartRateDate() {
         return heartRateDate;
@@ -34,7 +40,7 @@ public class HeartRate {
     public void setHeartRate(int heartRate) {
         this.heartRate = heartRate;
     }
-    // TODO json ignore while fetching rower?
+
     public Rower getRower() {
         return rower;
     }
@@ -49,5 +55,13 @@ public class HeartRate {
 
     public void setHeartRateId(Long heartRateId) {
         this.heartRateId = heartRateId;
+    }
+
+    public long getAverageHeartRate() {
+        return averageHeartRate;
+    }
+
+    public void setAverageHeartRate(long averageHeartRate) {
+        this.averageHeartRate = averageHeartRate;
     }
 }

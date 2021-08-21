@@ -1,6 +1,8 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,9 +15,11 @@ public class TrainingSchedule {
     private Long trainingScheduleId;
 
     @OneToOne
+    @JsonBackReference
     private Crew crew;
 
     @OneToMany(mappedBy = "trainingSchedule")
+    @JsonManagedReference(value = "schedule")
     private List<TrainingSession> trainingSessions;
 
     public Long getTrainingScheduleId() {

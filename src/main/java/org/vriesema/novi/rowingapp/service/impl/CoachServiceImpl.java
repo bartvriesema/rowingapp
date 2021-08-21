@@ -48,7 +48,6 @@ public class CoachServiceImpl implements CoachService {
         coach = updateFields(coach, currentCoach);
 
         coachRepository.save(coach);
-
     }
 
     @Override
@@ -71,6 +70,7 @@ public class CoachServiceImpl implements CoachService {
         }
         if (Objects.isNull(newCoach.getCrew())) {
             newCoach.setCrew(currentCoach.getCrew());
+
         }
         // TODO fix issue with isClubCoach and isCrewCoach check
         // Boolean variables cannot be compared in the same way

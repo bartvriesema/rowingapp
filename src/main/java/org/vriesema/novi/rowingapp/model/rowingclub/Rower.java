@@ -1,6 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ public class Rower extends Person {
     private int numberOfVictoryPoints;
 
     @OneToMany(mappedBy = "rower")
+    @JsonManagedReference(value = "rower")
     private List<HeartRate> heartrateList;
 
     @Column
@@ -27,11 +29,11 @@ public class Rower extends Person {
         this.numberOfVictoryPoints = numberOfVictoryPoints;
     }
 
+    @JsonIgnore
     public List<HeartRate> getHeartrateList() {
         return heartrateList;
     }
 
-    @JsonIgnore
     public void setHeartrateList(List<HeartRate> heartrateList) {
         this.heartrateList = heartrateList;
     }

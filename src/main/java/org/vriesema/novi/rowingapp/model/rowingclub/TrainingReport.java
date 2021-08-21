@@ -1,5 +1,6 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class TrainingReport {
     private byte[] trainingReportFile;
 
     @ManyToOne
+    @JsonBackReference(value = "session")
     private TrainingSession trainingSession;
 
     public Long getTrainingReportId() {

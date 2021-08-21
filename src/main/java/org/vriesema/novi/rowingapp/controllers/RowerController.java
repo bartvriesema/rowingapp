@@ -13,6 +13,7 @@ import org.vriesema.novi.rowingapp.service.RowerService;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users/rowers")
@@ -64,9 +65,9 @@ public class RowerController {
 
     @GetMapping(value = "/{rowerid}")
     public ResponseEntity<Object> getRowerById(@PathVariable("rowerid") long rowerId) {
-        if (rowerService.findRowerById(rowerId).isPresent()) {
-            Rower rower = rowerService.findRowerById(rowerId).get();
-            RowerDto rowerDto = RowerDto.fromRower(rower);
+        Optional<Rower> rower = rowerService.findRowerById(rowerId);
+        if (rower.isPresent()) {
+            RowerDto rowerDto = RowerDto.fromRower(rower.get());
             return ResponseEntity.ok().body(rowerDto);
         }
 
@@ -87,8 +88,8 @@ public class RowerController {
 
     @PostMapping(value = "/heartrate/{rowerid}")
     public ResponseEntity<Object> addHeartRate(@PathVariable("rowerid") long rowerId, @RequestBody HeartRateDto heartRateDto) {
-        rowerService.addHeartRate(rowerId, heartRateDto.toHeartRate());
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(rowerService.addHeartRate(rowerId, heartRateDto.toHeartRate()));
+
     }
 }
 

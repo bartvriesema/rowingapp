@@ -1,5 +1,6 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.vriesema.novi.rowingapp.model.authentication.User;
 
 import javax.persistence.*;
@@ -33,6 +34,7 @@ public class Person {
     private User user;
 
     @ManyToOne
+    @JsonBackReference(value = "crew")
     private Crew crew;
 
     public String getFirstName() {

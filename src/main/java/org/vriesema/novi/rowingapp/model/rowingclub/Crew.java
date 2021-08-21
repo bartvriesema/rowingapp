@@ -1,6 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,9 +18,11 @@ public class Crew {
     private String crewName;
 
     @OneToMany(mappedBy = "crew")
+    @JsonManagedReference(value = "crew")
     private List<Person> crewMembers;
 
     @OneToMany(mappedBy = "crew")
+    @JsonManagedReference(value = "results")
     private List<Result> results;
 
     public Long getId() {

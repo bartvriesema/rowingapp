@@ -30,6 +30,9 @@ public class RowerServiceImpl implements RowerService {
 
     @Override
     public Long addRower(Rower rower) {
+        if (!rower.isRower()) {
+            rower.setRower(true);
+        }
         Rower newRower = rowerRepository.save(rower);
         return newRower.getPersonId();
     }
@@ -45,18 +48,37 @@ public class RowerServiceImpl implements RowerService {
     }
 
     @Override
-    public void addHeartRate(long rowerId, HeartRate heartRate) {
+    public HeartRate addHeartRate(long rowerId, HeartRate heartRate) {
         Optional<Rower> rower = rowerRepository.findById(rowerId);
         if (rower.isEmpty()) throw new RecordNotFoundException();
         heartRate.setRower(rower.get());
-        heartrateRepository.save(heartRate);
+        heartRate.setAverageHeartRate(getAverageHeartRate(rowerId));
+        return heartrateRepository.save(heartRate);
     }
 
     @Override
     public List<HeartRate> getHeartRateList(long rowerId) {
         Optional<Rower> rower = rowerRepository.findById(rowerId);
         if (rower.isEmpty()) throw new RecordNotFoundException();
+
         return heartrateRepository.findByRower(rower.get());
+    }
+
+    @Override
+    public long getAverageHeartRate(long rowerId) {
+        List<HeartRate> heartRateList = getHeartRateList(rowerId);
+
+        if (heartRateList.isEmpty()) return 0;
+
+        int heartRateCounter = 0;
+        int heartRateSum = 0;
+
+        for (HeartRate heartRate : heartRateList) {
+            heartRateSum = heartRateSum + heartRate.getHeartRate();
+            heartRateCounter++;
+        }
+
+        return heartRateSum / heartRateCounter;
     }
 }
 

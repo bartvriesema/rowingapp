@@ -7,10 +7,11 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class HeartRateDto implements Serializable {
-    private Long heartRateId;
+    private long heartRateId;
     private LocalDate heartRateDate;
     private int heartRate;
     private Rower rower;
+    private long averageHeartRate;
 
     public static HeartRateDto fromHeartRate(HeartRate heartRate) {
         if (heartRate == null) return null;
@@ -21,22 +22,24 @@ public class HeartRateDto implements Serializable {
         heartRateDto.heartRateDate = heartRate.getHeartRateDate();
         heartRateDto.heartRate = heartRate.getHeartRate();
         heartRateDto.rower = heartRate.getRower();
+        heartRateDto.averageHeartRate = 0;
 
         return heartRateDto;
     }
 
     public HeartRate toHeartRate() {
-        HeartRate heartRate = new HeartRate();
+        HeartRate newHeartRate = new HeartRate();
 
-        heartRate.setHeartRateId(heartRateId);
-        heartRate.setHeartRateDate(heartRateDate);
-        heartRate.setHeartRate(this.heartRate);
-        heartRate.setRower(rower);
+        newHeartRate.setHeartRateId(heartRateId);
+        newHeartRate.setHeartRateDate(heartRateDate);
+        newHeartRate.setHeartRate(heartRate);
+        newHeartRate.setRower(rower);
+        newHeartRate.setAverageHeartRate(0);
 
-        return heartRate;
+        return newHeartRate;
     }
 
-    public Long getHeartRateId() {
+    public long getHeartRateId() {
         return heartRateId;
     }
 
@@ -67,4 +70,12 @@ public class HeartRateDto implements Serializable {
     public void setRower(Rower rower) {
         this.rower = rower;
     }
+
+//    public long getAverageHeartRate() {
+//        return averageHeartRate;
+//    }
+//
+//    public void setAverageHeartRate(long averageHeartRate) {
+//        this.averageHeartRate = averageHeartRate;
+//    }
 }

@@ -16,7 +16,9 @@ public interface RowerService {
 
     Optional<Rower> findRowerById(long rowerId);
 
-    void addHeartRate(long rowerId, HeartRate heartRate);
+    HeartRate addHeartRate(long rowerId, HeartRate heartRate);
 
     List<HeartRate> getHeartRateList(long rowerId);
+
+    long getAverageHeartRate(long rowerId);
 }

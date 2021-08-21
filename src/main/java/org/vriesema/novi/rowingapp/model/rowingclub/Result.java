@@ -1,5 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -23,6 +25,7 @@ public class Result {
     private int timeInSeconds;
 
     @ManyToOne
+    @JsonBackReference(value = "results")
     private Crew crew;
 
     public Long getResultId() {
