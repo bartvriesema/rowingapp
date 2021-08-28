@@ -2,13 +2,13 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSession;
 import org.vriesema.novi.rowingapp.repository.TrainingSessionRepository;
 import org.vriesema.novi.rowingapp.service.TrainingSessionService;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -32,7 +32,7 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
     }
 
     @Override
-    public Long addTrainingSession(TrainingSession trainingSession) { // TODO validate input?
+    public Long addTrainingSession(TrainingSession trainingSession) {
 
         TrainingSession newTrainingSession = trainingSessionRepository.save(trainingSession);
 
@@ -62,28 +62,29 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
     @Override
     public TrainingSession updateFields(TrainingSession newTrainingSession, TrainingSession currentTrainingSession) {
 
-        if (Objects.isNull(newTrainingSession.getStartTime())) {
+        if (newTrainingSession.getStartTime() == null) {
             newTrainingSession.setStartTime(currentTrainingSession.getStartTime());
         }
-        if (Objects.isNull(newTrainingSession.getEndTime())) {
+        if (newTrainingSession.getEndTime() == null) {
             newTrainingSession.setEndTime(currentTrainingSession.getEndTime());
         }
-        if (Objects.isNull(newTrainingSession.getShortDescription())) {
+        if (newTrainingSession.getShortDescription() == null) {
             newTrainingSession.setShortDescription(currentTrainingSession.getShortDescription());
         }
-        if (Objects.isNull(newTrainingSession.getLongDescription())) {
+        if (newTrainingSession.getLongDescription() == null) {
             newTrainingSession.setLongDescription(currentTrainingSession.getLongDescription());
         }
-        if (Objects.isNull(newTrainingSession.getTrainingType())) {
+        if (newTrainingSession.getTrainingType() == null) {
             newTrainingSession.setTrainingType(currentTrainingSession.getTrainingType());
         }
-        if (Objects.isNull(newTrainingSession.getTrainingSchedule())) {
+        if (newTrainingSession.getTrainingSchedule() == null) {
             newTrainingSession.setTrainingSchedule(currentTrainingSession.getTrainingSchedule());
         }
 
         return newTrainingSession;
 
     }
+
 
 
 }

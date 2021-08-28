@@ -18,7 +18,8 @@ public class CrewServiceImpl implements CrewService {
     private final TrainingScheduleRepository trainingScheduleRepository;
 
     @Autowired
-    public CrewServiceImpl(CrewRepository crewRepository, TrainingScheduleRepository trainingScheduleRepository) {
+    public CrewServiceImpl(CrewRepository crewRepository,
+                           TrainingScheduleRepository trainingScheduleRepository) {
         this.crewRepository = crewRepository;
         this.trainingScheduleRepository = trainingScheduleRepository;
     }

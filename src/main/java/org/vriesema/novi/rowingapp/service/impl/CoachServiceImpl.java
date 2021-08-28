@@ -8,7 +8,7 @@ import org.vriesema.novi.rowingapp.repository.CoachRepository;
 import org.vriesema.novi.rowingapp.service.CoachService;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class CoachServiceImpl implements CoachService {
@@ -38,14 +38,12 @@ public class CoachServiceImpl implements CoachService {
 
     @Override
     public void updateCoach(long coachId, Coach coach) {
-        Coach currentCoach;
-        if (coachRepository.findById(coachId).isPresent()) {
-            currentCoach = coachRepository.findById(coachId).get();
-        } else {
+        Optional<Coach> currentCoach = coachRepository.findById(coachId);
+        if (currentCoach.isEmpty()) {
             throw new RecordNotFoundException();
         }
 
-        coach = updateFields(coach, currentCoach);
+        coach = updateFields(coach, currentCoach.get());
 
         coachRepository.save(coach);
     }
@@ -53,28 +51,30 @@ public class CoachServiceImpl implements CoachService {
     @Override
     public Coach updateFields(Coach newCoach, Coach currentCoach) {
 
-        if (Objects.isNull(newCoach.getFirstName())) {
+        if (newCoach.getFirstName() == null) {
             newCoach.setFirstName(currentCoach.getFirstName());
         }
-        if (Objects.isNull(newCoach.getLastName())) {
+        if (newCoach.getLastName() == null) {
             newCoach.setLastName(currentCoach.getLastName());
         }
-        if (Objects.isNull(newCoach.getDateOfBirth())) {
+        if (newCoach.getDateOfBirth() == null) {
             newCoach.setDateOfBirth(currentCoach.getDateOfBirth());
         }
-        if (Objects.isNull(newCoach.getGender())) {
+        if (newCoach.getGender() == null) {
             newCoach.setGender(currentCoach.getGender());
         }
-        if (Objects.isNull(newCoach.getUser())) {
+        if (newCoach.getUser() == null) {
             newCoach.setUser(currentCoach.getUser());
         }
-        if (Objects.isNull(newCoach.getCrew())) {
+        if (newCoach.getCrew() == null) {
             newCoach.setCrew(currentCoach.getCrew());
-
         }
-        // TODO fix issue with isClubCoach and isCrewCoach check
-        // Boolean variables cannot be compared in the same way
-        // Find more efficient way to update fields in database
+        if (!newCoach.isClubCoach()) {
+            newCoach.setClubCoach(currentCoach.isClubCoach());
+        }
+        if (!newCoach.isCrewCoach()) {
+            newCoach.setCrewCoach(currentCoach.isCrewCoach());
+        }
 
         return newCoach;
     }

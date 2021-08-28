@@ -77,19 +77,22 @@ public class CrewController {
 
     @GetMapping(value = "/results/{crewid}")
     public ResponseEntity<Object> getResultByCrewId(@PathVariable("crewid") long crewId) {
-        if (!resultService.getResultsByCrewId(crewId).isEmpty()) {
-            List<Result> resultList = resultService.getResultsByCrewId(crewId);
-            List<ResultDto> resultDtos = new ArrayList<>();
+        List<Result> resultList = resultService.getResultsByCrewId(crewId);
 
-            for (Result result : resultList) {
-                resultDtos.add(ResultDto.fromResult(result));
-            }
-
-            return ResponseEntity.ok().body(resultDtos);
-
+        if (resultList.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
 
+        List<ResultDto> resultDtos = new ArrayList<>();
+
+        for (Result result : resultList) {
+            resultDtos.add(ResultDto.fromResult(result));
+        }
+
+        return ResponseEntity.ok().body(resultDtos);
 
     }
+
+
 }
+

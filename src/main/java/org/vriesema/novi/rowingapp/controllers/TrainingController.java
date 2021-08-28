@@ -1,22 +1,29 @@
 package org.vriesema.novi.rowingapp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.vriesema.novi.rowingapp.controllers.dtos.TrainingScheduleDto;
 import org.vriesema.novi.rowingapp.controllers.dtos.TrainingSessionDto;
 import org.vriesema.novi.rowingapp.controllers.dtos.TrainingTypeDto;
+import org.vriesema.novi.rowingapp.exceptions.BadRequestException;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSchedule;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSession;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingType;
+import org.vriesema.novi.rowingapp.service.TrainingReportService;
 import org.vriesema.novi.rowingapp.service.TrainingScheduleService;
 import org.vriesema.novi.rowingapp.service.TrainingSessionService;
 import org.vriesema.novi.rowingapp.service.TrainingTypeService;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users/training")
@@ -25,12 +32,17 @@ public class TrainingController {
     private final TrainingScheduleService trainingScheduleService;
     private final TrainingTypeService trainingTypeService;
     private final TrainingSessionService trainingSessionService;
+    private final TrainingReportService trainingReportService;
 
     @Autowired
-    public TrainingController(TrainingScheduleService trainingScheduleService, TrainingTypeService trainingTypeService, TrainingSessionService trainingSessionService) {
+    public TrainingController(TrainingScheduleService trainingScheduleService,
+                              TrainingTypeService trainingTypeService,
+                              TrainingSessionService trainingSessionService,
+                              TrainingReportService trainingReportService) {
         this.trainingScheduleService = trainingScheduleService;
         this.trainingTypeService = trainingTypeService;
         this.trainingSessionService = trainingSessionService;
+        this.trainingReportService = trainingReportService;
     }
 
     @GetMapping
@@ -106,14 +118,17 @@ public class TrainingController {
 
     @GetMapping(value = "/sessions/{sessionid}")
     public ResponseEntity<Object> getTrainingSessionById(@PathVariable("sessionid") Long trainingSessionId) {
+        Optional<TrainingSession> sessionOptional = trainingSessionService.getTrainingSessionById(trainingSessionId);
 
-        if (trainingSessionService.getTrainingSessionById(trainingSessionId).isPresent()) {
-            TrainingSession trainingSession = trainingSessionService.getTrainingSessionById(trainingSessionId).get();
-            TrainingSessionDto trainingSessionDto = TrainingSessionDto.fromTrainingSession(trainingSession);
-            return ResponseEntity.ok().body(trainingSessionDto);
+        if (sessionOptional.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
+
+        TrainingSession trainingSession = sessionOptional.get();
+        TrainingSessionDto trainingSessionDto = TrainingSessionDto.fromTrainingSession(trainingSession);
+        return ResponseEntity.ok().body(trainingSessionDto);
     }
+
 
     @PostMapping(value = "/sessions")
     public ResponseEntity<Object> addTrainingSession(@RequestBody TrainingSessionDto trainingSessionDto) {
@@ -132,6 +147,31 @@ public class TrainingController {
         trainingSessionService.updateTrainingSession(trainingSessionId, trainingSessionDto.toTrainingSession());
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(value = "/sessions/{sessionid}/file")
+    public ResponseEntity<Object> addTrainingSessionFile(@PathVariable("sessionid") Long trainingSessionId,
+                                                         @RequestParam("uploadfile") MultipartFile file) throws IOException {
+
+        if (!isValidContentType(Objects.requireNonNull(file.getContentType()))) {
+            throw new BadRequestException();
+        }
+
+        trainingReportService.uploadFile(trainingSessionId, file);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    private boolean isValidContentType(String contentType) {
+        return contentType.equals("image/jpeg") || contentType.equals("image/png") || contentType.equals("video/mpeg") || contentType.equals("video/mp4");
+    }
+
+    @GetMapping(value = "/sessions/report/{reportid}")
+    public ResponseEntity<byte[]> getTrainingSessionFile(@PathVariable("reportid") Long trainingReportId) {
+
+        byte[] fileBytes = trainingReportService.getFile(trainingReportId);
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"reportfile\"").body(fileBytes);
     }
 
 }

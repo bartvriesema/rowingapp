@@ -40,12 +40,13 @@ public class RowerController {
 
     @GetMapping(value = "/crew/{crewid}")
     public ResponseEntity<Object> getRowersByCrewId(@PathVariable("crewid") long crewId) {
-        if (rowerService.findRowersByCrewId(crewId).isEmpty()) {
+        List<Rower> rowerList = rowerService.findRowersByCrewId(crewId);
+
+        if (rowerList.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
         List<RowerDto> rowerDtos = new ArrayList<>();
-        List<Rower> rowerList = rowerService.findRowersByCrewId(crewId);
 
         for (Rower rower : rowerList) {
             rowerDtos.add(RowerDto.fromRower(rower));

@@ -1,6 +1,7 @@
 package org.vriesema.novi.rowingapp.service;
 
 
+import org.springframework.web.multipart.MultipartFile;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSession;
 
 import java.util.List;

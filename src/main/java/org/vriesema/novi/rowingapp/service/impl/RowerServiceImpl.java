@@ -18,7 +18,8 @@ public class RowerServiceImpl implements RowerService {
     private final HeartrateRepository heartrateRepository;
 
     @Autowired
-    public RowerServiceImpl(RowerRepository rowerRepository, HeartrateRepository heartrateRepository) {
+    public RowerServiceImpl(RowerRepository rowerRepository,
+                            HeartrateRepository heartrateRepository) {
         this.rowerRepository = rowerRepository;
         this.heartrateRepository = heartrateRepository;
     }
@@ -39,7 +40,7 @@ public class RowerServiceImpl implements RowerService {
 
     @Override
     public List<Rower> findRowersByCrewId(long crewId) {
-        return rowerRepository.findRowerByCrewId(crewId);
+        return rowerRepository.findRowersByCrewId(crewId);
     }
 
     @Override
