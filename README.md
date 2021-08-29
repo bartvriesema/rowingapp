@@ -17,7 +17,12 @@ Van iedere ploeg kunnen de resultaten van onderlinge sparwedstrijden en de natio
 * Postman API Client geïnstalleerd. Download via: https://www.postman.com/
 * PostgreSQL database geïnstalleerd. Download via: https://www.postgresql.org/
 
-## Installatie handleiding
+## Meegeleverde bestanden
+* Postman request file
+* Postman environment file
+* Functionele- en technische documentatie
+* Installatiehandleiding
+
 
 
 
