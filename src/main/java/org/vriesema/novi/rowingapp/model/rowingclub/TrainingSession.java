@@ -1,6 +1,7 @@
 package org.vriesema.novi.rowingapp.model.rowingclub;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -85,7 +86,7 @@ public class TrainingSession {
         this.trainingType = trainingType;
     }
 
-    // @JsonIgnore
+    @JsonIgnore
     public TrainingSchedule getTrainingSchedule() {
         return trainingSchedule;
     }
