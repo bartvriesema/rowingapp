@@ -12,27 +12,12 @@ Iedere roeier kan elke dag zijn rusthartslag vastleggen en krijgt bij afwijkinge
 Van iedere ploeg kunnen de resultaten van onderlinge sparwedstrijden en de nationale wedstrijden worden vastgelegd. Deze resultaten kunnen onderling tussen de ploegen vergeleken worden met vastgelegde normwaardes op basis van historische gegevens.
 # Werking
 ## Benodigdheden
-* PostgreSQL installatie
-* Postman 
-* Adopt OpenJDK 11
+* Adopt OpenJDK11 geïnstalleerd. Download via: https://adoptopenjdk.net/
+* Java IDE geïnstalleerd, bij voorkeur IntelliJ IDEA. Download via: https://www.jetbrains.com/idea/
+* Postman API Client geïnstalleerd. Download via: https://www.postman.com/
+* PostgreSQL database geïnstalleerd. Download via: https://www.postgresql.org/
+
 ## Installatie handleiding
 
-## Endpoints
-* /api/authenticate - Authenticatie endpoint. Met behulp van een gebruikersnaam-wachtwoord combinatie kan een token verkregen worden voor verdere authenticatie.
-* /api/users - 
-* /api/users/{username}
-* /api/users/coaches -  
-* /api/users/coaches/clubcoaches
-* /api/users/crews
-* /api/users/crews/{crewid}
-* /api/users/crews/results
-* /api/users/rowers
-* /api/users/rowers/{rowerid}
-* /api/users/rowers/crew/{crewid}
-* /api/users/rowers/heartrate/{rowerid}
-* /api/users/training
-* /api/users/training/{crewid}
-* /api/users/training/types
-* /api/users/training/sessions
-* /api/users/training/sessions/{crewid}
+
 
