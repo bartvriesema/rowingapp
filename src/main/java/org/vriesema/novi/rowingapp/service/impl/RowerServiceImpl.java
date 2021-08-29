@@ -80,6 +80,7 @@ public class RowerServiceImpl implements RowerService {
         }
 
         return heartRateSum / heartRateCounter;
+
     }
 }
 

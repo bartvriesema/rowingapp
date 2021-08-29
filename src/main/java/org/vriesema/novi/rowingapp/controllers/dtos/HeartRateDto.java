@@ -22,7 +22,7 @@ public class HeartRateDto implements Serializable {
         heartRateDto.heartRateDate = heartRate.getHeartRateDate();
         heartRateDto.heartRate = heartRate.getHeartRate();
         heartRateDto.rower = heartRate.getRower();
-        heartRateDto.averageHeartRate = 0;
+        heartRateDto.averageHeartRate = heartRate.getAverageHeartRate();
 
         return heartRateDto;
     }
@@ -34,7 +34,7 @@ public class HeartRateDto implements Serializable {
         newHeartRate.setHeartRateDate(heartRateDate);
         newHeartRate.setHeartRate(heartRate);
         newHeartRate.setRower(rower);
-        newHeartRate.setAverageHeartRate(0);
+        newHeartRate.setAverageHeartRate(averageHeartRate);
 
         return newHeartRate;
     }
@@ -71,11 +71,11 @@ public class HeartRateDto implements Serializable {
         this.rower = rower;
     }
 
-//    public long getAverageHeartRate() {
-//        return averageHeartRate;
-//    }
-//
-//    public void setAverageHeartRate(long averageHeartRate) {
-//        this.averageHeartRate = averageHeartRate;
-//    }
+    public long getAverageHeartRate() {
+        return averageHeartRate;
+    }
+
+    public void setAverageHeartRate(long averageHeartRate) {
+        this.averageHeartRate = averageHeartRate;
+    }
 }
