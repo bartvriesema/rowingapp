@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 public class Person {
-    /**
+    /*
      * Users en persons kunnen onafhankelijk van elkaar bestaan. Er kan een relatie gelegd worden
      * tussen een user en een person.
      */

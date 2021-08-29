@@ -2,7 +2,6 @@ package org.vriesema.novi.rowingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
 import org.vriesema.novi.rowingapp.model.rowingclub.TrainingSession;
 import org.vriesema.novi.rowingapp.repository.TrainingSessionRepository;
@@ -84,7 +83,6 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
         return newTrainingSession;
 
     }
-
 
 
 }

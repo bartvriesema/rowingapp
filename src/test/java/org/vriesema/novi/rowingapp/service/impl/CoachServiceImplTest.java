@@ -1,6 +1,5 @@
 package org.vriesema.novi.rowingapp.service.impl;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -10,11 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.vriesema.novi.rowingapp.exceptions.RecordNotFoundException;
 import org.vriesema.novi.rowingapp.model.rowingclub.Coach;
 import org.vriesema.novi.rowingapp.repository.CoachRepository;
-import org.vriesema.novi.rowingapp.service.CoachService;
 
 import java.util.Optional;
 

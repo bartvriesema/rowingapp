@@ -206,7 +206,7 @@ class TrainingControllerTest {
     @Nested
     class WhenGettingTrainingSessionsByCrewId {
         private MockMvc mockMvc;
-        private long CREW_ID = 21;
+        private final long CREW_ID = 21;
 
         @Mock
         List<TrainingSession> trainingSessionList;
@@ -242,7 +242,7 @@ class TrainingControllerTest {
     @Nested
     class WhenGettingTrainingSessionById {
         private MockMvc mockMvc;
-        private long TRAINING_SESSION_ID = 23;
+        private final long TRAINING_SESSION_ID = 23;
 
         @Mock
         TrainingSession trainingSession;
@@ -311,7 +311,7 @@ class TrainingControllerTest {
 
     @Nested
     class WhenUpdatingTrainingSession {
-        private long TRAINING_SESSION_ID = 27;
+        private final long TRAINING_SESSION_ID = 27;
         private MockMvc mockMvc;
         @Mock
         private TrainingSessionDto trainingSessionDto;
@@ -321,7 +321,7 @@ class TrainingControllerTest {
             mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
 
             trainingSessionDto = new TrainingSessionDto();
-            trainingSessionDto.setTrainingSessionId(1);
+            trainingSessionDto.setTrainingSessionId(TRAINING_SESSION_ID);
             trainingSessionDto.setShortDescription("Korte tekst");
         }
 

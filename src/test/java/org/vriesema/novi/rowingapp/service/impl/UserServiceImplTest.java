@@ -1,6 +1,5 @@
 package org.vriesema.novi.rowingapp.service.impl;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
